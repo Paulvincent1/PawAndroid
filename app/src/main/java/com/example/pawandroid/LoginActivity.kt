@@ -25,8 +25,8 @@ class LoginActivity : AppCompatActivity() {
 
         binding.apply {
             btnLogin.setOnClickListener {
-                val email = etEmail.text
-                val pass = etPass.text
+                val email = tilUsername.text
+                val pass = tilPassword.text
                 login(email.toString(),pass.toString())
             }
         }
