@@ -19,7 +19,7 @@
         android:padding="10dp" />
 
     <TextView
-        android:id="@+id/tvNameofEvent"
+        android:id="@+id/tvPetName"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"

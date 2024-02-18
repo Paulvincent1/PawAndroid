@@ -24,7 +24,7 @@
         app:srcCompat="@drawable/paw_icon" />
 
     <TextView
-        android:id="@+id/tvNameofEvent"
+        android:id="@+id/tvPetName"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -46,5 +46,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameofEvent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPetName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
