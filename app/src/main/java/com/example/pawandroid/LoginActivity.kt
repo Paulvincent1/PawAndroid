@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.example.pawandroid.R
@@ -29,6 +30,11 @@ class LoginActivity : AppCompatActivity() {
                 val pass = tilPassword.text
                 login(email.toString(),pass.toString())
             }
+
+            tvSignup.setOnClickListener(){
+                val intent = Intent(this@LoginActivity, SignupActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }
@@ -42,8 +48,12 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         val user = RetrofitBuilder.buildService(PawService::class.java)
         val call = user.login(email, password)
+        binding.progressBar.visibility = View.VISIBLE
+        binding.btnLogin.isEnabled = false
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
+                binding.progressBar.visibility = View.GONE
+                binding.btnLogin.isEnabled = true
                 if (response.isSuccessful) {
                     Toast.makeText(applicationContext, "login", Toast.LENGTH_SHORT).show()
                     val token = response.body()?.token
@@ -58,6 +68,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
+                binding.progressBar.visibility = View.GONE
+                binding.btnLogin.isEnabled = true
                 Toast.makeText(applicationContext, "cant connect", Toast.LENGTH_SHORT).show()
             }
         })
