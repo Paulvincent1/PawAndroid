@@ -16,5 +16,13 @@ data class Pets(
     @SerializedName("description")
     val description: String,
     @SerializedName("img")
-    val img: String
+    val img: String,
+    @SerializedName("user")
+    val user: User // Include user object within the Pet class
 )
+
+data class PetResponse(
+    @SerializedName("pet")
+    val pet: Pets,
+)
+

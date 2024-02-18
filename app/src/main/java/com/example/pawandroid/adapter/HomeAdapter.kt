@@ -1,9 +1,11 @@
 package com.example.pawandroid.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.pawandroid.PetInfoActivity
 import com.example.pawandroid.databinding.HomeListBinding
 import com.example.pawandroid.model.Pets
 
@@ -30,7 +32,9 @@ class HomeAdapter(val petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdap
                 .into(ivPlace)
 
             ivPlace.setOnClickListener {
-
+                val intent = Intent(holder.itemView.context, PetInfoActivity::class.java)
+                intent.putExtra("key", currentItem.id.toString())
+                holder.itemView.context.startActivity(intent)
             }
         }
 

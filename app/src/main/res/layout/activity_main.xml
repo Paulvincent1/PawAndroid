@@ -82,9 +82,9 @@
                     android:layout_height="434dp">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvTopConcerts"
-                        android:layout_width="353dp"
-                        android:layout_height="418dp"
+                        android:id="@+id/rvHome"
+                        android:layout_width="375dp"
+                        android:layout_height="421dp"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -92,6 +92,17 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/rvHome"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

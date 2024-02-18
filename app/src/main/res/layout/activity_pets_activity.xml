@@ -85,7 +85,7 @@
                     android:layout_height="502dp">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvTopConcerts"
+                        android:id="@+id/rvHome"
                         android:layout_width="385dp"
                         android:layout_height="479dp"
                         android:orientation="horizontal"

@@ -4,16 +4,35 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pawandroid.R
+import com.example.pawandroid.adapter.HomeAdapter
+import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityMainBinding
+import com.example.pawandroid.model.Pets
+import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var petList: MutableList<Pets>
+    private lateinit var homeAdapter: HomeAdapter
+    private lateinit var recyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        init()
+        getPetList()
+
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
@@ -50,10 +69,47 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+
         }
 
         // Set the default selected item
         bottomNavigation.selectedItemId = R.id.nav_home
+    }
+    private fun getPetList() {
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.getPetsList()
+        binding.progressBar3.visibility = View.VISIBLE
+        call.enqueue(object : Callback<List<Pets>> {
+            override fun onResponse(call: Call<List<Pets>>, response: Response<List<Pets>>) {
+                binding.progressBar3.visibility = View.GONE
+                if (response.isSuccessful) {
+                    val petsResponse = response.body()
+                    petsResponse?.let { pets ->
+                        // Assuming petList is a member variable of your class
+                        petList.clear() // Clear existing list before adding new items
+                        petList.addAll(pets)
+                        homeAdapter.notifyDataSetChanged()
+                    } ?: run {
+                        // Handle null response body
+                    }
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<List<Pets>>, t: Throwable) {
+                binding.progressBar3.visibility = View.GONE
+                Toast.makeText(applicationContext, "No pets available", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+    private fun init() {
+        recyclerView = binding.rvHome
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = GridLayoutManager(applicationContext,2)
+        petList = mutableListOf()
+        homeAdapter = HomeAdapter(petList)
+        recyclerView.adapter = homeAdapter
     }
     override fun onBackPressed() {
         showExitConfirmationDialog()
