@@ -1,5 +1,6 @@
 package com.example.pawandroid.service
 
+import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
 import retrofit2.Call
@@ -31,5 +32,5 @@ interface PawService {
     fun getPetsList(): Call<List<Pets>>
 
     @GET("pets/{id}")
-    fun getPet(@Path("id") id: Int) : Call<Pets>
+    fun getPet(@Path("id") id: Int) : Call<PetResponse>
 }
