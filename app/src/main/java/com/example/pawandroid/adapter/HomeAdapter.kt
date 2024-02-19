@@ -25,7 +25,7 @@ class HomeAdapter(val petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdap
 
             // Bind other views here if needed
 
-            val imageUrl = "http://192.168.100.192/${currentItem.img}"
+            val imageUrl = "http://192.168.0.13/${currentItem.img}"
             tvPetName.text = currentItem.name
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(imageUrl)

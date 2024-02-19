@@ -66,10 +66,11 @@
                 android:padding="20dp">
 
                 <TextView
+                    android:id="@+id/test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fill out this form"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
 
 
@@ -189,6 +190,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnAdopt3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_button"
