@@ -107,6 +107,7 @@
 
 
                         <TextView
+                            android:id="@+id/tvPost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
@@ -119,6 +120,7 @@
                             app:layout_constraintVertical_bias="0.5" />
 
                         <ImageView
+                            android:id="@+id/posttoAdopt"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_profile_arrow"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midgreen"
-    tools:context=".MainActivity">
+    tools:context=".SignupActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -92,6 +92,7 @@
                 android:drawableLeft="@drawable/ic_name"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
+                android:textColor="@color/white"
                 android:hint="Full Name:"
                 android:inputType="textEmailAddress"
                 android:maxEms="50"
@@ -100,7 +101,8 @@
                 android:textColorHint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:textCursorDrawable="@drawable/dog" />
 
             <EditText
                 android:id="@+id/til_email"
@@ -109,9 +111,10 @@
                 android:layout_marginTop="36dp"
                 android:autofillHints="emailAddress"
                 android:background="@drawable/custom_edittext_2nd"
+                android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_email"
+                android:textColor="@color/white"
                 android:hint="Email:"
                 android:inputType="textEmailAddress"
                 android:maxEms="50"
@@ -120,7 +123,8 @@
                 android:textColorHint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_username" />
+                app:layout_constraintTop_toBottomOf="@+id/til_username"
+                android:textCursorDrawable="@drawable/dog"/>
 
             <EditText
                 android:id="@+id/til_password"
@@ -128,11 +132,12 @@
                 android:layout_height="37dp"
                 android:layout_marginTop="28dp"
                 android:autofillHints="password"
+                android:textColor="@color/white"
                 android:background="@drawable/custom_edittext_2nd"
+                android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="10dp"
                 android:ems="30"
                 android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_password"
                 android:hint="Password:"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -140,40 +145,43 @@
                 android:textColorHint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_email" />
+                app:layout_constraintTop_toBottomOf="@+id/til_email"
+                android:textCursorDrawable="@drawable/dog"/>
 
             <EditText
                 android:id="@+id/til_password2"
                 android:layout_width="260dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="28dp"
+                android:textColor="@color/white"
                 android:autofillHints="password"
                 android:background="@drawable/custom_edittext_2nd"
+                android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="10dp"
                 android:ems="30"
                 android:gravity="center_vertical"
                 android:hint="Confirm Password:"
-                android:drawableLeft="@drawable/ic_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="10dp"
                 android:textColorHint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_password" />
+                app:layout_constraintTop_toBottomOf="@+id/til_password"
+                android:textCursorDrawable="@drawable/dog"/>
 
             <ProgressBar
                 android:id="@+id/progressBar2"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.367"
-                android:visibility="gone"/>
+                app:layout_constraintVertical_bias="0.367" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

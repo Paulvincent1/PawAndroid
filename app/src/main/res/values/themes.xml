@@ -15,6 +15,8 @@
         <item name="android:color">@color/midgreen</item>
     </style>
 
+
+<!--    card-->
     <style name="custom_card_view_style" parent="Widget.MaterialComponents.CardView" >
         <item name="shapeAppearanceOverlay">@style/custom_card_view</item>
     </style>
@@ -25,5 +27,7 @@
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
+
+
 
 </resources>
