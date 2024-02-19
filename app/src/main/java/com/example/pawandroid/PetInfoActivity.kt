@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.pawandroid.bottomNav.MainActivity
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityPetInfoBinding
 import com.example.pawandroid.model.PetResponse
@@ -32,6 +33,13 @@ class PetInfoActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("key", id)
+            startActivity(intent)
+
+        }
         binding.btnViewProfile.setOnClickListener {
             val intent = Intent(this, ViewProfileActivity::class.java)
             intent.putExtra("key", userId)
@@ -54,8 +62,10 @@ class PetInfoActivity : AppCompatActivity() {
                        // Now you can access the pet object and its properties
                        binding.tvName.text = pet.name
                        binding.tvAge.text = pet.age
+                       binding.tvSpecies.text = pet.species
+                       binding.tvBreed.text = pet.breed
                        binding.tvDescription.text = pet.description
-                       val imageUrl = "http://192.168.0.13/${pet.img}"
+                       val imageUrl = "http://192.168.100.192/${pet.img}"
                        Glide.with(applicationContext)
                            .load(imageUrl)
                            .into(binding.imgPetInfo)

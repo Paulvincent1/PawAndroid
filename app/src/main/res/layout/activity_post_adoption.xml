@@ -5,11 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midgreen"
-    tools:context=".AdoptActivity">
+    tools:context=".PostAdoptionActivity">
 
 
     <!-- Horizontal LinearLayout below the MaterialCardView -->
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Post your Pet "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/btnBack"
@@ -68,7 +78,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fill out this form"
+                    android:text="Pet Details"
+                    android:textSize="35dp"
                     android:textStyle="bold"/>
 
 
@@ -79,96 +90,114 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Full Name"
-                    android:textSize="16sp"
+                    android:text="Pet Name"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText_fullName"
+                    android:id="@+id/editText_PetName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter your name"
                     android:inputType="textPersonName" />
 
                 <TextView
-                    android:id="@+id/textView_address"
+                    android:id="@+id/tvAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Address"
-                    android:textSize="16sp"
+                    android:text="Age"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText_address"
+                    android:id="@+id/editText_age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter your address"
-                    android:inputType="textPostalAddress" />
+                    android:hint="Age"
+                    android:inputType="number" />
+                <TextView
+                    android:id="@+id/textView_Gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gender:"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/editText_Gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:spinnerMode="dialog"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPersonName"
+                    android:padding="16dp"
+                    android:entries="@array/gender"/>
 
                 <TextView
-                    android:id="@+id/textView_city"
+                    android:id="@+id/tvSpecies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="City"
-                    android:textSize="16sp"
+                    android:text="Species:"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/editText_species"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Species"
+                    android:spinnerMode="dialog"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPersonName"
+                    android:padding="16dp"/>
+
+                <TextView
+                    android:id="@+id/textView_Provinces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Provinces:"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/editText_Provinces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Species"
+                    android:spinnerMode="dialog"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPersonName"
+                    android:padding="16dp"
+                    android:entries="@array/provinces_array"/>
+
+                <TextView
+                    android:id="@+id/textView_breed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Breed"
+                    android:hint="Species"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText_city"
+                    android:id="@+id/editText_breed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="City"
-                    android:inputType="textPersonName" />
+                    android:hint="Breed" />
 
                 <TextView
-                    android:id="@+id/textView_contactNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Contact number"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_contactNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="+63"
-                    android:inputType="phone" />
-
-                <TextView
-                    android:id="@+id/textView_veterinaryInformation"
+                    android:id="@+id/textView_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Veterinary Information:"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:id="@+id/checkBox_veterinaryCare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Are you committed to providing regular veterinary care for your pet, including vaccinations and preventative medications?" />
-
-                <CheckBox
-                    android:id="@+id/textView_commitment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="By checking this box, I acknowledge that adopting a pet is a long-term commitment. I understand the financial, emotional, and time responsibilities involved in caring for a pet. I agree to provide a loving and safe environment for my adopted pet and to prioritize their well-being."
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView_whyAdopt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="Why do you want to adopt a pet?\nPlease Specify."
-                    android:textSize="16sp"
+                    android:text="Description"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText_whyAdopt"
+                    android:id="@+id/editText_desc"
                     android:layout_width="match_parent"
                     android:layout_height="257dp" />
 
@@ -193,7 +222,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_button"
                         android:backgroundTint="@color/newPrimaryDarkGreen"
-                        android:text="Adopt"
+                        android:text="Post"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.943"

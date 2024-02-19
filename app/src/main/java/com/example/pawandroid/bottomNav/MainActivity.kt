@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pawandroid.PetInfoActivity
+import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HomeAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
@@ -25,10 +27,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var petList: MutableList<Pets>
     private lateinit var homeAdapter: HomeAdapter
     private lateinit var recyclerView: RecyclerView
+    private var floatingadd: String? = null
+    private var imgProfile: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.posttoAdopt.setOnClickListener {
+            val intent = Intent(this, PostAdoptionActivity::class.java)
+            intent.putExtra("key", floatingadd)
+            startActivity(intent)
+
+        }
+
+        binding.imgProfile.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("key", imgProfile)
+            startActivity(intent)
+
+        }
+
 
         init()
         getPetList()
