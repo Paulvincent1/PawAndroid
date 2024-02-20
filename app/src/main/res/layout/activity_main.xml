@@ -112,7 +112,9 @@
                         android:src="@drawable/baseline_add_24"
                         android:layout_marginBottom="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        style="@style/CircularFloatingActionButton"
+                        android:backgroundTint="@color/midgreen"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
