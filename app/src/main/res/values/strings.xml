@@ -10,8 +10,7 @@
     </string-array>
 
 
-
-        <!--provinces-->
+    <!--provinces-->
     <string-array name="provinces_array">
         <item>Abra</item>
         <item>Agusan del Norte</item>
@@ -105,6 +104,7 @@
 
     <!--gender-->
     <string-array name="giveUp_pet">
+        <item>Choose...</item>
         <item>Post for Adoption</item>
         <item>Incoming Request</item>
         <item>Your Accepted Request</item>
@@ -112,10 +112,10 @@
 
     <!--gender-->
     <string-array name="AdoptPet">
+        <item>Choose...</item>
         <item>My Request</item>
         <item>Adoption Status</item>
     </string-array>
-
 
 
 </resources>

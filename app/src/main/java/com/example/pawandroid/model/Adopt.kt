@@ -19,4 +19,6 @@ data class Adopt(
     val adoption_agreement: Boolean,
     @SerializedName("additional_comment")
     val additional_comment: String,
+    @SerializedName("pet")
+    val pet: Pets,
 )

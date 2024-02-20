@@ -7,15 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pawandroid.PetInfoActivity
 import com.example.pawandroid.databinding.HomeListBinding
+import com.example.pawandroid.databinding.PetProfileListBinding
 import com.example.pawandroid.model.Pets
 
-class HomeAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class PetsAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<PetsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: HomeListBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: PetProfileListBinding): RecyclerView.ViewHolder(binding.root)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
-        val view = HomeListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetsAdapter.ViewHolder {
+        val view = PetProfileListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,12 +28,14 @@ class HomeAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdap
 
             val imageUrl = "http://192.168.0.13/${currentItem.img}"
 //                          http://192.168.100.192/
-            tvPetName.text = currentItem.name
+            tvNameRequest.text = currentItem.name
+            tvage.text = currentItem.age
+            tvbreed.text = currentItem.breed
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(imageUrl)
-                .into(ivPlace)
+                .into(imgPetProfile)
 
-            ivPlace.setOnClickListener {
+            rvClick.setOnClickListener {
                 val intent = Intent(holder.itemView.context, PetInfoActivity::class.java)
                 intent.putExtra("key", currentItem.id.toString())
                 holder.itemView.context.startActivity(intent)

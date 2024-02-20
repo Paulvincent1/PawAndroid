@@ -13,6 +13,8 @@ data class Pets(
     val species: String,
     @SerializedName("breed")
     val breed: String,
+    @SerializedName("region")
+    val region: String,
     @SerializedName("description")
     val description: String,
     @SerializedName("img")

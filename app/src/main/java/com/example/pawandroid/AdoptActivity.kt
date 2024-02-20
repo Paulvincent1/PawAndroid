@@ -1,8 +1,10 @@
 package com.example.pawandroid
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityAdoptBinding
 import com.example.pawandroid.model.Adopt
@@ -16,6 +18,7 @@ class AdoptActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdoptBinding
     private var id: String? = null
     private var btnCancel: String? = null
+    private var imageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +26,10 @@ class AdoptActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         id = intent.getStringExtra("key")
-        binding.test.text = id
+        imageUrl = intent.getStringExtra("imageUrl")
+        Glide.with(applicationContext)
+            .load(imageUrl)
+            .into(binding.imgPetInfo)
         binding.apply {
             btnAdopt3.setOnClickListener {
                 val name = editTextFullName.text.toString().trim()
@@ -128,6 +134,9 @@ class AdoptActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     // Showing a toast message indicating success
                     Toast.makeText(applicationContext, "Pet Requested Successfully", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this@AdoptActivity, MyRequestActivity::class.java)
+                    startActivity(intent)
                     // Finishing the current activity or process
                     finish()
                 }else{
