@@ -18,18 +18,6 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.posttoAdopt.setOnClickListener {
-            val intent = Intent(this, PostAdoptionActivity::class.java)
-            intent.putExtra("key", floatingadd)
-            startActivity(intent)
-
-        }
-        binding.tvPost.setOnClickListener {
-            val intent = Intent(this, PostAdoptionActivity::class.java)
-            intent.putExtra("key", floatingadd)
-            startActivity(intent)
-
-        }
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
