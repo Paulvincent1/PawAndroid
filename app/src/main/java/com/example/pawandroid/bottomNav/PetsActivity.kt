@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,38 @@ class PetsActivity : AppCompatActivity() {
             intent.putExtra("key", floatingadd)
             startActivity(intent)
 
+        }
+        binding.buttonDog.setOnClickListener {
+            val filteredList = petProfileList.filter {  petItem ->
+                (petItem.species?.contains("dog", ignoreCase = true) == true)  }.toMutableList()
+
+            binding.buttonDog.setBackgroundColor(ContextCompat.getColor(this, R.color.midPurple))
+            binding.buttonDog.setTextColor(ContextCompat.getColor(this, R.color.white))
+
+            binding.buttonCat.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+            binding.buttonCat.setTextColor(ContextCompat.getColor(this, R.color.black))
+            // Update your adapter with the filtered results
+            petsAdapter.updateData(filteredList)
+
+            // Notify the adapter that the dataset has changed
+            petsAdapter.notifyDataSetChanged()
+        }
+        binding.buttonCat.setOnClickListener {
+            val filteredList = petProfileList.filter {  petItem ->
+                (petItem.species?.contains("cat", ignoreCase = true) == true)  }.toMutableList()
+
+            binding.buttonCat.setBackgroundColor(ContextCompat.getColor(this, R.color.midPurple))
+            binding.buttonCat.setTextColor(ContextCompat.getColor(this, R.color.white))
+
+            binding.buttonDog.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+            binding.buttonDog.setTextColor(ContextCompat.getColor(this, R.color.black))
+
+
+            // Update your adapter with the filtered results
+            petsAdapter.updateData(filteredList)
+
+            // Notify the adapter that the dataset has changed
+            petsAdapter.notifyDataSetChanged()
         }
 
         init()

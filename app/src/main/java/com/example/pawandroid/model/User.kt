@@ -9,10 +9,14 @@ data class User(
     val name: String,
     @SerializedName("email")
     val email: String,
+    @SerializedName("img")
+    val img: String,
     @SerializedName("password")
     val password: String,
     @SerializedName("password_confirmation")
     val password_confirmation: String,
     @SerializedName("token")
-    val token: String
+    val token: String,
 )
+
+

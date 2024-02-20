@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonDog"
                 android:layout_width="124dp"
                 android:layout_height="68dp"
                 android:layout_marginTop="72dp"
@@ -53,13 +53,13 @@
                 android:drawableLeft="@drawable/dog"
                 android:text="Dogs"
                 android:textColor="@color/black"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCat"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonCat"
                 android:layout_width="136dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="72dp"
