@@ -26,6 +26,12 @@ class MyRequestActivity : AppCompatActivity() {
         binding = ActivityMyRequestBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        binding.btnBack.setOnClickListener {
+            finish()
+
+        }
+
         init()
         getRequestList()
     }
@@ -66,7 +72,7 @@ class MyRequestActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Adopt>>, t: Throwable) {
                 binding.progressBar5.visibility = View.GONE
-                Toast.makeText(applicationContext, "failed to retrieve items", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Failed to retrieve items", Toast.LENGTH_SHORT).show()
             }
 
         })
