@@ -5,11 +5,13 @@ import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
 import retrofit2.Call
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 
@@ -38,6 +40,7 @@ interface PawService {
     fun getPet(@Path("id") id: Int) : Call<PetResponse>
 
 
+    //adopt pet
     @FormUrlEncoded
     @POST("pets/{id}/adopt")
     fun adoptPet(
@@ -50,5 +53,30 @@ interface PawService {
         @Field("adoption_agreement") adoption_agreement: String,
         @Field("additional_comment") additional_comment: String
     ): Call<Adopt>
+
+    //My request
+    @GET("my-requests")
+    fun getMyRequestList() : Call<List<Adopt>>
+
+    @GET("my-requests/{id}/edit")
+    fun getMyRequest(@Path("id") id: Int) : Call<Adopt>
+
+    @FormUrlEncoded
+    @PUT("my-requests/{id}")
+    fun updateAdoptionRequest(
+        @Path("id") id: Int,
+        @Field("name") name: String,
+        @Field("address") address: String,
+        @Field("city") city: String,
+        @Field("contact_number") contact_number: String,
+        @Field("veterinary_information") veterinary_information: String,
+        @Field("adoption_agreement") adoption_agreement: String,
+        @Field("additional_comment") additional_comment: String
+    ): Call<Adopt>
+
+    @DELETE("my-requests/{id}")
+    fun deleteRequest(
+        @Path("id") id: Int
+    ): Call<Unit>
 
 }

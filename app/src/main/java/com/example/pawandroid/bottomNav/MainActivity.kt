@@ -1,12 +1,15 @@
 package com.example.pawandroid.bottomNav
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pawandroid.PetInfoActivity
@@ -51,6 +54,33 @@ class MainActivity : AppCompatActivity() {
 
         init()
         getPetList()
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val imm = applicationContext?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.searchView.windowToken, 0)
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    // Filter your list based on the newText
+                    val filteredList = petList.filter { petItem ->
+                        (petItem.breed?.contains(newText, ignoreCase = true) == true) ||
+                                (petItem.name?.contains(newText, ignoreCase = true) == true)
+                    }.toMutableList()
+
+                    // Update your adapter with the filtered results
+                    homeAdapter.updateData(filteredList)
+
+                    // Notify the adapter that the dataset has changed
+                    homeAdapter.notifyDataSetChanged()
+                }
+                return true
+            }
+
+        })
 
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
