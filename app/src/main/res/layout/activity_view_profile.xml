@@ -7,10 +7,9 @@
     tools:context=".ViewProfileActivity">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/backToBack"
@@ -23,21 +22,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="56dp"
-        android:src="@drawable/ic_profile_users"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearance="@style/circular" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_profile_users"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/circular" />
 
         <TextView
             android:id="@+id/emailText"
-            android:layout_width="102dp"
+            android:layout_width="409dp"
             android:layout_height="33dp"
             android:gravity="center"
             android:text="Email"
@@ -48,6 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvViewProfile"
             android:layout_width="409dp"
             android:layout_height="433dp"
             android:background="@color/midgreen"
@@ -56,6 +56,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNameProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

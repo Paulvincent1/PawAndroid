@@ -4,15 +4,14 @@ import com.example.pawandroid.model.Adopt
 import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
+import com.example.pawandroid.model.ViewProfile
 import retrofit2.Call
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
-import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface PawService {
@@ -33,6 +32,10 @@ interface PawService {
         @Field("password_confirmation") password_confirmation: String
     ): Call<User>
 
+    @GET("users/{id}")
+    fun getUser(@Path("id") id: Int) : Call<ViewProfile>
+    @GET("pets/user/{id}")
+    fun getUserPets(@Path("id") id: Int): Call<List<Pets>>
     @GET("pets")
     fun getPetsList(): Call<List<Pets>>
 
