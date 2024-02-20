@@ -47,10 +47,9 @@ class PetsActivity : AppCompatActivity() {
                 (petItem.species?.contains("dog", ignoreCase = true) == true)  }.toMutableList()
 
             binding.buttonDog.setBackgroundColor(ContextCompat.getColor(this, R.color.midPurple))
-            binding.buttonDog.setTextColor(ContextCompat.getColor(this, R.color.white))
+
 
             binding.buttonCat.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-            binding.buttonCat.setTextColor(ContextCompat.getColor(this, R.color.black))
             // Update your adapter with the filtered results
             petsAdapter.updateData(filteredList)
 
@@ -62,10 +61,10 @@ class PetsActivity : AppCompatActivity() {
                 (petItem.species?.contains("cat", ignoreCase = true) == true)  }.toMutableList()
 
             binding.buttonCat.setBackgroundColor(ContextCompat.getColor(this, R.color.midPurple))
-            binding.buttonCat.setTextColor(ContextCompat.getColor(this, R.color.white))
+
 
             binding.buttonDog.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-            binding.buttonDog.setTextColor(ContextCompat.getColor(this, R.color.black))
+
 
 
             // Update your adapter with the filtered results

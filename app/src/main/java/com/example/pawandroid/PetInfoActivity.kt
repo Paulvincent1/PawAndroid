@@ -71,7 +71,7 @@ class PetInfoActivity : AppCompatActivity() {
                        binding.tvBreed.text = pet.breed
                        binding.tvDescription.text = pet.description
                        binding.tvLocation.text = pet.region
-                       imageUrl = "http://192.168.0.13/${pet.img}"
+                       imageUrl = "http://192.168.100.192/${pet.img}"
 //                                   paul =  http://192.168.0.13/
 //                                   nath =  http://192.168.100.192/
                        Glide.with(applicationContext)

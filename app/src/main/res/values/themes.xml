@@ -28,6 +28,18 @@
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
+    <!--    floating bar na bilog-->
+    <style name="CircularFloatingActionButton" parent="Widget.Design.FloatingActionButton">
+        <item name="elevation">0dp</item> <!-- Remove shadow -->
+        <item name="pressedTranslationZ">0dp</item> <!-- Remove shadow on press -->
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Circular</item> <!-- Apply circular shape -->
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.Circular" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item> <!-- 50% means a circle -->
+    </style>
+
 
 
 </resources>

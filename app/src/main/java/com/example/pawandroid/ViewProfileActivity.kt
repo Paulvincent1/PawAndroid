@@ -84,7 +84,9 @@ class ViewProfileActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "good get profile", Toast.LENGTH_SHORT).show()
                         binding.tvNameProfile.text = user.name
                         binding.emailText.text = user.email
-                        val imageUrl = "http://192.168.0.13/${user.img}"
+                        val imageUrl = "http://192.168.100.192/${user.img}"
+                        // paul =  http://192.168.0.13/
+                        //  nath =  http://192.168.100.192/
                         Glide.with(applicationContext)
                             .load(imageUrl)
                             .into(binding.imageView)
