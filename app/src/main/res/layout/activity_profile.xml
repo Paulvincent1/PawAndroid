@@ -16,18 +16,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="56dp"
+                android:layout_marginTop="28dp"
                 android:src="@drawable/ic_profile_users"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/circular" />
-
 
             <TextView
                 android:id="@+id/textView"
@@ -43,16 +44,16 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/ivProfile"
-                android:layout_marginTop="300dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="280dp"
+                android:layout_marginEnd="20dp"
                 app:cardCornerRadius="20dp"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,12 +81,12 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="#FFFDFD"/>
+                        android:background="#FFFDFD" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="#FFFDFD"/>
+                        android:background="#FFFDFD" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -111,62 +112,43 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="List Your Pet for Adoption"
+                            android:text="Give up a Pet"
                             android:textColor="@color/black"
-                            android:textSize="15sp"
+                            android:textSize="20dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                        <ImageView
-                            android:id="@+id/posttoAdopt"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_profile_arrow"
-                            android:layout_marginEnd="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5"/>
+                            app:layout_constraintVertical_bias="0.5"
+                            android:textStyle="bold"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="#FFFDFD"/>
+                        android:background="#FFFDFD" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/btnPendingTickets"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="63dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp">
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Adoption Inquiries"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_profile_arrow"
+                        <Spinner
+                            android:id="@+id/editText_giveUp"
+                            android:layout_width="363dp"
+                            android:layout_height="50dp"
+                            android:entries="@array/giveUp_pet"
+                            android:inputType="textPersonName"
+                            android:padding="16dp"
+                            android:spinnerMode="dialog"
+                            android:text="Gender"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -180,21 +162,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="Pets I'm Interested In"
+                            android:text="Adopt a Pet"
                             android:textColor="@color/black"
-                            android:textSize="15sp"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_profile_arrow"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.5" />
 
@@ -203,32 +176,26 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
 
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="79dp"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp">
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Pending adoptions"
-                            android:textColor="@color/black"
-                            android:textSize="15sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/ic_profile_arrow"
+                        <Spinner
+                            android:id="@+id/editText_AdoptR"
+                            android:layout_width="366dp"
+                            android:layout_height="58dp"
+                            android:entries="@array/AdoptPet"
+                            android:inputType="textPersonName"
+                            android:padding="16dp"
+                            android:spinnerMode="dialog"
+                            android:text="Gender"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.4"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
+                            app:layout_constraintVertical_bias="0.476" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -242,7 +209,7 @@
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="16dp"
                 android:text="Logout"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

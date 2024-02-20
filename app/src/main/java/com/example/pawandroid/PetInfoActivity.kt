@@ -63,7 +63,7 @@ class PetInfoActivity : AppCompatActivity() {
                        binding.tvSpecies.text = pet.species
                        binding.tvBreed.text = pet.breed
                        binding.tvDescription.text = pet.description
-                       val imageUrl = "http://192.168.0.13/${pet.img}"
+                       val imageUrl = "http://192.168.100.192/${pet.img}"
                        Glide.with(applicationContext)
                            .load(imageUrl)
                            .into(binding.imgPetInfo)

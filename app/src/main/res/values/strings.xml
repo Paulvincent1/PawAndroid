@@ -103,6 +103,19 @@
         <item>Female</item>
     </string-array>
 
+    <!--gender-->
+    <string-array name="giveUp_pet">
+        <item>Post for Adoption</item>
+        <item>Incoming Request</item>
+        <item>Your Accepted Request</item>
+    </string-array>
+
+    <!--gender-->
+    <string-array name="AdoptPet">
+        <item>My Request</item>
+        <item>Adoption Status</item>
+    </string-array>
+
 
 
 </resources>
