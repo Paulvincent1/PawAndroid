@@ -5,14 +5,19 @@ import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
 import com.example.pawandroid.model.ViewProfile
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PawService {
 
@@ -22,6 +27,36 @@ interface PawService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Call<User>
+    @Multipart
+    @POST("post-for-adoption")
+    fun postForAdoption(
+        @Part("name") name: RequestBody,
+        @Part("age") age: Int,
+        @Part("species") species: RequestBody,
+        @Part("breed") breed: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("region") region: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part img: MultipartBody.Part
+    ): Call<Pets>
+
+    @Multipart
+    @POST("pets/{id}")
+    fun updatePet(
+        @Path("id") id : Int,
+        @Query("_method") method: String,
+        @Part("name") name: RequestBody,
+        @Part("age") age: Int,
+        @Part("species") species: RequestBody,
+        @Part("breed") breed: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("region") region: RequestBody,
+        @Part("description") description: RequestBody,
+        @Part img: MultipartBody.Part
+    ): Call<Pets>
+
+    @DELETE("pets/{id}")
+    fun deletePet(@Path("id") id :Int): Call<Unit>
 
     @FormUrlEncoded
     @POST("register")
@@ -32,6 +67,15 @@ interface PawService {
         @Field("password_confirmation") password_confirmation: String
     ): Call<User>
 
+    @GET("users/current")
+    fun getCurrentUser() : Call<User>
+    @Multipart
+    @POST("users/{id}")
+    fun updateUserProfile(
+        @Path("id") id: Int,
+        @Query("_method") method: String,
+        @Part img: MultipartBody.Part
+        ) : Call<User>
     @GET("users/{id}")
     fun getUser(@Path("id") id: Int) : Call<ViewProfile>
     @GET("pets/user/{id}")

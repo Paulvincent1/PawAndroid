@@ -8,11 +8,13 @@ data class Pets(
     @SerializedName("name")
     val name: String,
     @SerializedName("age")
-    val age: String,
+    val age: Int,
     @SerializedName("species")
     val species: String,
     @SerializedName("breed")
     val breed: String,
+    @SerializedName("gender")
+    val gender: String,
     @SerializedName("region")
     val region: String,
     @SerializedName("description")
@@ -27,4 +29,5 @@ data class PetResponse(
     @SerializedName("pet")
     val pet: Pets,
 )
+
 

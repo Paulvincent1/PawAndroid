@@ -66,12 +66,12 @@ class PetInfoActivity : AppCompatActivity() {
                        userId = user.id.toString()
                        // Now you can access the pet object and its properties
                        binding.tvName.text = pet.name
-                       binding.tvAge.text = pet.age
+                       binding.tvAge.text = pet.age.toString()
                        binding.tvSpecies.text = pet.species
                        binding.tvBreed.text = pet.breed
                        binding.tvDescription.text = pet.description
                        binding.tvLocation.text = pet.region
-                       imageUrl = "http://192.168.100.192/${pet.img}"
+                       imageUrl = "http://192.168.0.13/${pet.img}"
 //                                   paul =  http://192.168.0.13/
 //                                   nath =  http://192.168.100.192/
                        Glide.with(applicationContext)

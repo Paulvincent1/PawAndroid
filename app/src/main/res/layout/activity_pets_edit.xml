@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midgreen"
-    tools:context=".PostAdoptionActivity">
-
+    tools:context=".PetsEditActivity">
 
     <!-- Horizontal LinearLayout below the MaterialCardView -->
 
@@ -196,24 +195,24 @@
                     android:layout_height="match_parent">
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnCancel"
+                        android:id="@+id/btnDelete"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:background="@drawable/rounded_button"
                         android:backgroundTint="@color/newPrimaryDarkGreen"
-                        android:text="Cancel"
+                        android:text="Delete"
                         android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnPost"
+                        android:id="@+id/btnUpdate"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_button"
                         android:backgroundTint="@color/newPrimaryDarkGreen"
-                        android:text="Post"
+                        android:text="Update"
                         android:textColor="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.943"
@@ -230,5 +229,6 @@
 
 
     </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

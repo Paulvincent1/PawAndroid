@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pawandroid.PetInfoActivity
+import com.example.pawandroid.PetsEditActivity
 import com.example.pawandroid.databinding.HomeListBinding
 import com.example.pawandroid.model.Pets
 
-class HomeAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class MyProfileAdapter (var petlist: MutableList<Pets>): RecyclerView.Adapter<MyProfileAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: HomeListBinding): RecyclerView.ViewHolder(binding.root)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyProfileAdapter.ViewHolder {
         val view = HomeListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return ViewHolder(view)
     }
@@ -33,7 +34,7 @@ class HomeAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdap
                 .into(ivPlace)
 
             ivPlace.setOnClickListener {
-                val intent = Intent(holder.itemView.context, PetInfoActivity::class.java)
+                val intent = Intent(holder.itemView.context, PetsEditActivity::class.java)
                 intent.putExtra("key", currentItem.id.toString())
                 holder.itemView.context.startActivity(intent)
             }
@@ -45,8 +46,5 @@ class HomeAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<HomeAdap
     override fun getItemCount(): Int {
         return petlist.size
     }
-    fun updateData(newDataset: List<Pets>) {
-        petlist = newDataset as MutableList<Pets>
-        notifyDataSetChanged() // Notify the adapter that the dataset has changed
-    }
+
 }
