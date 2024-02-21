@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pawandroid.PetInfoActivity
+import com.example.pawandroid.R
 import com.example.pawandroid.databinding.HomeListBinding
 import com.example.pawandroid.databinding.PetProfileListBinding
 import com.example.pawandroid.model.Pets
@@ -26,10 +27,10 @@ class PetsAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<PetsAdap
 
             // Bind other views here if needed
 
-            val imageUrl = "http://192.168.100.192/${currentItem.img}"
+            val imageUrl = "http://192.168.0.13/${currentItem.img}"
 //                          http://192.168.100.192/ , paul = "http://192.168.0.13/
             tvNameRequest.text = currentItem.name
-            tvage.text = currentItem.age
+            tvage.text = currentItem.age.toString()
             tvbreed.text = currentItem.breed
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(imageUrl)
@@ -39,6 +40,16 @@ class PetsAdapter(var petlist: MutableList<Pets>): RecyclerView.Adapter<PetsAdap
                 val intent = Intent(holder.itemView.context, PetInfoActivity::class.java)
                 intent.putExtra("key", currentItem.id.toString())
                 holder.itemView.context.startActivity(intent)
+            }
+
+            when (currentItem.species) {
+                "Dog" -> {
+                    img1.setImageResource(R.drawable.hachico)
+                }
+
+                "Cat" -> {
+                    img1.setImageResource(R.drawable.kitty)
+                }
             }
         }
 

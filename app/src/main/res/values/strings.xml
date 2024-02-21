@@ -4,8 +4,8 @@
 
     <!--spinner species-->
     <string-array name="SpinnerSpecies">
-        <item>Dogs</item>
-        <item>Cats</item>
+        <item>Dog</item>
+        <item>Cat</item>
         <!-- Add more items as needed -->
     </string-array>
 

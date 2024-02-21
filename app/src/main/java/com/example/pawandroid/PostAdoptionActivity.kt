@@ -1,19 +1,35 @@
 package com.example.pawandroid
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.example.pawandroid.adapter.SpeciesAdapter
+import android.widget.Toast
 import com.example.pawandroid.bottomNav.MainActivity
-import com.example.pawandroid.databinding.ActivityPetsActivityBinding
+import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityPostAdoptionBinding
+import com.example.pawandroid.model.Pets
+import com.example.pawandroid.service.PawService
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
 class PostAdoptionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostAdoptionBinding
     private var btnBack : String? = null
     private var btnCancel : String? = null
+    private val PICK_IMAGE_REQUEST = 1
+    private lateinit var imagePart: MultipartBody.Part // Added to hold the imagePart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPostAdoptionBinding.inflate(layoutInflater)
@@ -26,11 +42,34 @@ class PostAdoptionActivity : AppCompatActivity() {
 
         }
         binding.btnCancel.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
-            intent.putExtra("key", btnCancel)
-            startActivity(intent)
-
+           finish()
         }
+        binding.imgPetInfo.setOnClickListener {
+            openImagePicker()
+        }
+        binding.btnPost.setOnClickListener {
+            binding.apply {
+                val name = editTextPetName.text.toString().trim()
+                val age = editTextAge.text.toString().trim()
+                val species = binding.editTextSpecies.selectedItem.toString() // Use selectedItem property to get the selected species
+                val breed = editTextBreed.text.toString().trim()
+                val gender = binding.editTextGender.selectedItem.toString() // Use selectedItem property to get the selected gender
+                val region = binding.editTextProvinces.selectedItem.toString() // Use selectedItem property to get the selected region
+                val description = editTextDesc.text.toString().trim()
+
+                // Check if imagePart is initialized and not null
+                if (::imagePart.isInitialized) {
+                    Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
+                    postPet(name, age.toInt(),species,breed,gender,region,description,imagePart)
+
+                } else {
+                    Toast.makeText(applicationContext, "img not initialized", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+
 
 
         val speciesSpinner = findViewById<Spinner>(R.id.editText_species)
@@ -52,4 +91,60 @@ class PostAdoptionActivity : AppCompatActivity() {
         speciesSpinner.prompt = "Select Species"
     }
 
+    private fun postPet(name: String, age: Int, species: String, breed: String, gender: String, region: String, description: String, imagePart: MultipartBody.Part){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.postForAdoption(
+            name.toRequestBody(),
+            age,
+            species.toRequestBody(),
+            breed.toRequestBody(),
+            gender.toRequestBody(),
+            region.toRequestBody(),
+            description.toRequestBody(),
+            imagePart
+        )
+        call.enqueue(object : Callback<Pets> {
+            override fun onResponse(call: Call<Pets>, response: Response<Pets>) {
+                if (response.isSuccessful){
+                    Toast.makeText(applicationContext, "Posted Successfully", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
+
+            override fun onFailure(call: Call<Pets>, t: Throwable) {
+                Log.e("potektalaga", "Failed to post pet", t)
+                Toast.makeText(applicationContext, "Failed to post pet", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val imageUri = data.data
+            binding.imgPetInfo.setImageURI(imageUri)
+            val imageFile = File(imageUri?.let { getRealPathFromUri(it) }) // Convert URI to File
+            val requestBody = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
+
+            imagePart = MultipartBody.Part.createFormData("img", imageFile.name, requestBody)
+        }
+    }
+
+    private fun getRealPathFromUri(uri: Uri): String {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, projection, null, null, null)
+        cursor?.moveToFirst()
+        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        val path = cursor?.getString(columnIndex ?: 0)
+        cursor?.close()
+        return path ?: ""
+    }
+
+    private fun openImagePicker() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
 }

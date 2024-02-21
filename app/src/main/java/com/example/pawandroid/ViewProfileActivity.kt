@@ -3,6 +3,7 @@ package com.example.pawandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,8 +54,10 @@ class ViewProfileActivity : AppCompatActivity() {
     private fun getUserPets(id:Int){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.getUserPets(id)
+        binding.progressBar8.visibility = View.VISIBLE
         call.enqueue(object : Callback<List<Pets>> {
             override fun onResponse(call: Call<List<Pets>>, response: Response<List<Pets>>) {
+                binding.progressBar8.visibility = View.GONE
                 if (response.isSuccessful) {
                     val responseBody = response.body()!!
                     petList.clear()
@@ -64,6 +67,7 @@ class ViewProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Pets>>, t: Throwable) {
+                binding.progressBar8.visibility = View.GONE
                 // Add logging to indicate failure
                 Log.e("getUserPets", "Failed to get user pets", t)
                 Toast.makeText(applicationContext, "bad", Toast.LENGTH_SHORT).show()
@@ -84,9 +88,14 @@ class ViewProfileActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "good get profile", Toast.LENGTH_SHORT).show()
                         binding.tvNameProfile.text = user.name
                         binding.emailText.text = user.email
-                        val imageUrl = "http://192.168.100.192/${user.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        val imageUrl = if (!user.img.isNullOrEmpty()) {
+                            "http://192.168.0.13/${user.img}"
+                            // paul =  http://192.168.0.13/
+                            //  nath =  http://192.168.100.192/
+                        } else {
+                            // Replace "default_image_url" with the resource ID of your default image
+                            "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+                        }
                         Glide.with(applicationContext)
                             .load(imageUrl)
                             .into(binding.imageView)

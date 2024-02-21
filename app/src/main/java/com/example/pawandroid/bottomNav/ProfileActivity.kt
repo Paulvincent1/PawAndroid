@@ -1,32 +1,62 @@
 package com.example.pawandroid.bottomNav
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.pawandroid.AdoptionStatusActivity
 import com.example.pawandroid.IncomingRequestActivity
+import com.example.pawandroid.MyProfileActivity
 import com.example.pawandroid.MyRequestActivity
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.YourAcceptedRequestActivity
+import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityMainBinding
 import com.example.pawandroid.databinding.ActivityProfileBinding
+import com.example.pawandroid.model.User
+import com.example.pawandroid.model.ViewProfile
+import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.File
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
     private var floatingadd: String? = null
-
+    private val PICK_IMAGE_REQUEST = 1
+    private lateinit var imageUri: Uri
+    private var userId: String? = null
+    private lateinit var imagePart: MultipartBody.Part
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getCurrentUser()
+
+        binding.imageView.setOnClickListener {
+            openImagePicker()
+
+        }
+        binding.tvProfile.setOnClickListener {
+            val intent =Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
@@ -149,6 +179,92 @@ class ProfileActivity : AppCompatActivity() {
 
 
     }
+    private fun getCurrentUser(){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.getCurrentUser()
+        binding.progressBar7.visibility = View.VISIBLE
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                binding.progressBar7.visibility = View.GONE
+                if(response.isSuccessful){
+                    val response = response?.body()
+
+                    binding.textView.text = response?.name
+
+                    userId = response?.id.toString()
+                    val imgUrl = if (!response?.img.isNullOrEmpty()) {
+                        "http://192.168.0.13/${response?.img}"
+                        // paul =  http://192.168.0.13/
+                        //  nath =  http://192.168.100.192/
+                    } else {
+                        // Replace "default_image_url" with the resource ID of your default image
+                        "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+                    }
+                    Glide.with(applicationContext)
+                        .load(imgUrl
+                        )
+                        .into(binding.imageView)
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                binding.progressBar7.visibility = View.GONE
+                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+    private fun updateUserProfile(id:Int, imagePart: MultipartBody.Part){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        binding.progressBar7.visibility = View.VISIBLE
+        val method = "PUT"
+        val call = retrofit.updateUserProfile(id,method,imagePart)
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                binding.progressBar7.visibility = View.GONE
+                if (response.isSuccessful){
+                    Toast.makeText(applicationContext, "updated successfully", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                binding.progressBar7.visibility = View.GONE
+                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            val imageUri = data.data
+            binding.imageView.setImageURI(imageUri)
+            val imageFile = File(imageUri?.let { getRealPathFromUri(it) }) // Convert URI to File
+            val requestBody = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
+
+            imagePart = MultipartBody.Part.createFormData("img", imageFile.name, requestBody)
+
+            userId?.let { updateUserProfile(it.toInt(), imagePart) }
+        }
+    }
+
+    private fun getRealPathFromUri(uri: Uri): String {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(uri, projection, null, null, null)
+        cursor?.moveToFirst()
+        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        val path = cursor?.getString(columnIndex ?: 0)
+        cursor?.close()
+        return path ?: ""
+    }
+
+    private fun openImagePicker() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
     override fun onBackPressed() {
         showExitConfirmationDialog()
     }
