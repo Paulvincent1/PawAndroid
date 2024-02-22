@@ -10,14 +10,15 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
         android:text="Incoming request"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.081" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvIncoming"
         android:layout_width="409dp"
         android:layout_height="652dp"
         android:layout_marginStart="1dp"

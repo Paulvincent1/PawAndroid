@@ -162,7 +162,7 @@ class PostAdoptionActivity : AppCompatActivity() {
         return filePath
     }
     private fun openImagePicker() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
     }

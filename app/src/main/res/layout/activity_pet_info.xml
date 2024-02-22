@@ -68,7 +68,7 @@
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tvNamePet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pet Name"

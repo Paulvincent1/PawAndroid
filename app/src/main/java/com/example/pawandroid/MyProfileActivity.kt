@@ -89,17 +89,17 @@ class MyProfileActivity : AppCompatActivity() {
                     getUserPets(userId!!.toInt())
 
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.100.192/${response?.img}"
+                        "http://192.168.0.13/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
                     }
-//                    Glide.with(applicationContext)
-//                        .load(imgUrl
-//                        )
-//                        .into(binding.imageView2)
+                    Glide.with(applicationContext)
+                        .load(imgUrl
+                        )
+                        .into(binding.imageView2)
                 }
             }
 
