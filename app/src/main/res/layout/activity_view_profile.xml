@@ -48,11 +48,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvViewProfile"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="433dp"
             android:background="@color/midgreen"
+            android:paddingEnd="30dp"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
