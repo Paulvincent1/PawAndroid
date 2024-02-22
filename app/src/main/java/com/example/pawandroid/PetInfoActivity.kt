@@ -12,6 +12,7 @@ import com.example.pawandroid.databinding.ActivityPetInfoBinding
 import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.service.PawService
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,14 @@ class PetInfoActivity : AppCompatActivity() {
 
         id = intent.getStringExtra("key")
         id?.let { getPet(it.toInt()) }
+
+
+        binding.btnReport.setOnClickListener{
+            val view:View = layoutInflater.inflate(R.layout.item_bottom_sheet_report,null)
+            val dialog = BottomSheetDialog(this)
+            dialog.setContentView(view)
+            dialog.show()
+        }
 
         binding.btnAdopt.setOnClickListener {
             val intent = Intent(this, AdoptActivity::class.java)
