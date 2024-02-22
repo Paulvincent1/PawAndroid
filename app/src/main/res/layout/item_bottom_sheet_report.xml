@@ -13,18 +13,17 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24"/>
+            android:src="@drawable/baseline_report_24" />
 
         <TextView
+            android:id="@+id/tvReason1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center|start"
-            android:text="Report"
+            android:text="Nudity or sexual activity"
             android:textColor="@color/midgreen"
-            android:textStyle="bold"/>
-
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -38,18 +37,17 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24"/>
+            android:src="@drawable/baseline_report_24" />
 
         <TextView
+            android:id="@+id/tvReason2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center|start"
-            android:text="Report"
+            android:text="Scam of fraud"
             android:textColor="@color/midgreen"
-            android:textStyle="bold"/>
-
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -63,18 +61,17 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24"/>
+            android:src="@drawable/baseline_report_24" />
 
         <TextView
+            android:id="@+id/tvReason3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center|start"
-            android:text="Report"
+            android:text="Others"
             android:textColor="@color/midgreen"
-            android:textStyle="bold"/>
-
-
+            android:textStyle="bold" />
 
 
     </LinearLayout>

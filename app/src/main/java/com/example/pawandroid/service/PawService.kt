@@ -1,6 +1,7 @@
 package com.example.pawandroid.service
 
 import com.example.pawandroid.model.Adopt
+import com.example.pawandroid.model.History
 import com.example.pawandroid.model.PetResponse
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
@@ -54,6 +55,13 @@ interface PawService {
         @Part("description") description: RequestBody,
         @Part img: MultipartBody.Part
     ): Call<Pets>
+
+    @FormUrlEncoded
+    @POST("pets/{id}")
+    fun reportPost(
+        @Path("id") id: Int,
+        @Field("reason") reason: String
+    ) : Call<Unit>
 
     @DELETE("pets/{id}")
     fun deletePet(@Path("id") id :Int): Call<Unit>
@@ -125,5 +133,32 @@ interface PawService {
     fun deleteRequest(
         @Path("id") id: Int
     ): Call<Unit>
+
+    @GET("incoming-requests")
+    fun getIncomingRequestList() : Call<List<Adopt>>
+
+    @GET("incoming-requests/details/{id}")
+    fun getIncomingRequest(@Path("id") id : Int) : Call<Adopt>
+
+
+    @PUT("incoming-requests/{id}/accept")
+    fun acceptIncoming(@Path("id") id: Int) : Call<Unit>
+
+
+    @PUT("incoming-requests/{id}/reject")
+    fun rejectIncoming(@Path("id") id: Int) : Call<Unit>
+
+    @GET("on-going-requests")
+    fun onGoingRequestList() : Call<List<Adopt>>
+
+    @GET("on-going-requests/details/{id}")
+    fun onGoingRequestDetail(@Path("id") id: Int): Call<Adopt>
+
+    @PUT("on-going-requests/{id}/done")
+    fun doneRequest(@Path("id")id : Int): Call<Unit>
+
+    @GET("history")
+    fun history(): Call<List<History>>
+
 
 }

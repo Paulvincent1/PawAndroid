@@ -5,15 +5,28 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
+import com.example.pawandroid.adapter.HistoryAdapter
+import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityHistoryBinding
 import com.example.pawandroid.databinding.ActivityMainBinding
+import com.example.pawandroid.model.History
+import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HistoryActivity : AppCompatActivity() {
     private var floatingadd: String? = null
     private lateinit var binding: ActivityHistoryBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var historyList: MutableList<History>
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +39,8 @@ class HistoryActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+        init()
+        getHistoryList()
 
 
 
@@ -69,6 +84,32 @@ class HistoryActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+    private fun init(){
+        recyclerView = binding.rvHistory
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        historyList = mutableListOf()
+        historyAdapter = HistoryAdapter(historyList)
+        recyclerView.adapter = historyAdapter
+    }
+    private fun getHistoryList(){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.history()
+        call.enqueue(object : Callback<List<History>> {
+            override fun onResponse(call: Call<List<History>>, response: Response<List<History>>) {
+                if(response.isSuccessful){
+                    historyList.clear()
+                    response.body()?.let { historyList.addAll(it) }
+                    historyAdapter.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<List<History>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
     override fun onBackPressed() {
         showExitConfirmationDialog()
