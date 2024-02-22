@@ -100,19 +100,22 @@
                         android:layout_height="2dp"
                         android:background="#FFFDFD" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/tvProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/midgreen"
                         android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         android:paddingTop="5dp"
+                        android:drawableLeft="@drawable/arrow_pet_info"
+                        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
                         android:paddingBottom="5dp"
                         android:text="My Profile"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/btnGoingtoEvents"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -128,20 +131,16 @@
                             android:text="Give up a Pet"
                             android:textColor="@color/black"
                             android:textSize="20dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5"
                             android:textStyle="bold"/>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:background="#FFFDFD" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:id="@+id/btnPendingTickets"
                         android:layout_width="match_parent"
                         android:layout_height="63dp"
@@ -163,9 +162,9 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:paddingTop="8dp"
@@ -179,15 +178,11 @@
                             android:text="Adopt a Pet"
                             android:textColor="@color/black"
                             android:textSize="20dp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
+                            android:textStyle="bold"/>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <LinearLayout
 
                         android:layout_width="match_parent"
                         android:layout_height="79dp"
@@ -204,15 +199,9 @@
                             android:paddingStart="20dp"
                             android:paddingEnd="40dp"
                             android:spinnerMode="dialog"
-                            android:text="Gender"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.4"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.476" />
+                            android:text="Gender" />
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
 
 
                 </LinearLayout>

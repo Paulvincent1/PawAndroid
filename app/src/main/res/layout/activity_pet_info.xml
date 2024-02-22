@@ -1,53 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/midgreen"
+    android:orientation="vertical"
     tools:context=".PetInfoActivity">
 
-    <ImageView
-        android:id="@+id/btnBack"
-        android:layout_width="38dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/arrow_pet_info"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginTop="10dp">
 
-    <ImageView
-        android:id="@+id/btnBack2"
-        android:layout_width="38dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/baseline_report_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="38dp"
+            android:layout_height="39dp"
+            android:src="@drawable/arrow_pet_info"
+            android:layout_margin="8dp"/>
 
-    <ImageView
-        android:id="@+id/btnViewProfile"
-        android:layout_width="55dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="64dp"
-        android:src="@drawable/person_home_ic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAdopt"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/btnBack2"
+            android:layout_width="38dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/baseline_report_24"/>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="306dp"
-        android:layout_height="256dp"
-        android:layout_marginTop="76dp"
-        android:background="@drawable/image_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="330dp"
+        android:layout_height="270dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/image_border">
 
         <ImageView
             android:id="@+id/imgPetInfo"
@@ -55,100 +45,165 @@
             android:layout_height="match_parent"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:src="@drawable/baseline_pets_dark"
-            app:layout_constraintBottom_toTopOf="@+id/tvName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.22" />
+            android:src="@drawable/baseline_pets_dark" />
 
     </FrameLayout>
 
 
-    <TextView
-        android:id="@+id/tvAge"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="Age"
-        android:textColor="@color/black"
-        android:textSize="19dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp">
 
+        <TextView
+            android:id="@+id/tvName1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pet Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginStart="50dp">
+        <TextView
+            android:id="@+id/tvAge1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="19dp"/>
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="19dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginStart="50dp">
+
+
+        <TextView
+            android:id="@+id/tvSpecies2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Species:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/tvSpecies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Species"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tvBreed1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Breed:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+
+        <TextView
+            android:id="@+id/tvBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Breed"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginStart="50dp">
+
+        <TextView
+            android:id="@+id/tvLocation1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
     <TextView
-        android:id="@+id/tvSpecies"
+        android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="Species"
+        android:text="Description:"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAge" />
-
-    <TextView
-        android:id="@+id/tvBreed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="Breed"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSpecies" />
-
-    <TextView
-        android:id="@+id/tvBreed2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
-        android:text="Breed:"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSpecies" />
+        android:layout_marginStart="50dp"/>
 
 
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="Location"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBreed" />
 
     <TextView
         android:id="@+id/tvDescription"
-        android:layout_width="303dp"
-        android:layout_height="144dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="116dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Description"
         android:text="Description"
         android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAdopt"
-        android:layout_width="250dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/rounded_button"
-        android:enabled="false"
-        android:text="ADOPT"
-        android:textColor="@color/newPrimaryDarkGreen"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="12dp" />
 
     <ProgressBar
         android:id="@+id/progressBar4"
@@ -157,23 +212,35 @@
         android:layout_height="wrap_content"
         android:elevation="10dp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="11dp"
-        android:text="Pet Name"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/btnViewProfile"
+            android:layout_width="63dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_gravity="start"
+            android:src="@drawable/person_home_ic" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAdopt"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/rounded_button"
+            android:enabled="false"
+            android:text="ADOPT"
+            android:textColor="@color/newPrimaryDarkGreen"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

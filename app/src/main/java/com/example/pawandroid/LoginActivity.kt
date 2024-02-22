@@ -2,12 +2,13 @@ package com.example.pawandroid
 
 import android.app.AlertDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.InputType
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import com.example.pawandroid.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.pawandroid.bottomNav.MainActivity
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityLoginBinding
@@ -19,6 +20,8 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private var isPasswordVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -26,24 +29,53 @@ class LoginActivity : AppCompatActivity() {
 
         binding.apply {
             btnLogin.setOnClickListener {
-                val email = tilUsername.text
-                val pass = tilPassword.text
-                login(email.toString(),pass.toString())
+                val email = tilUsername.text.toString()
+                val pass = tilPassword.text.toString()
+                login(email, pass)
             }
 
-            tvSignup.setOnClickListener(){
+            tvSignup.setOnClickListener {
                 val intent = Intent(this@LoginActivity, SignupActivity::class.java)
                 startActivity(intent)
             }
-        }
 
+            // Create a TextWatcher for the password EditText
+            tilPassword.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(editable: Editable?) {
+                    // You can perform any actions after the text has changed, e.g., validation
+                }
+            })
+
+            showPassLogin.setOnCheckedChangeListener { _, isChecked ->
+                // Update the variable to track the state of the "Show Password" checkbox
+                isPasswordVisible = isChecked
+                // Toggle the password visibility based on the checkbox state
+                updatePasswordVisibility()
+            }
+        }
     }
+
     override fun onBackPressed() {
         showExitConfirmationDialog()
     }
 
-
-
+    private fun updatePasswordVisibility() {
+        if (isPasswordVisible) {
+            // If checked, set the input type to visible text
+            binding.tilPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        } else {
+            // If not checked, set the input type to password
+            binding.tilPassword.inputType =
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+        // Move the cursor to the end of the text
+        binding.tilPassword.setSelection(binding.tilPassword.text?.length ?: 0)
+    }
 
     private fun login(email: String, password: String) {
         val user = RetrofitBuilder.buildService(PawService::class.java)
@@ -55,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
                 if (response.isSuccessful) {
-                    Toast.makeText(applicationContext, "login", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Login", Toast.LENGTH_SHORT).show()
                     val token = response.body()?.token
                     binding.textView2.text = token
                     token?.let { RetrofitBuilder.setAuthToken(it) }
@@ -63,14 +95,14 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish() // Finish the LoginActivity to prevent going back when pressing back button
                 } else {
-                    Toast.makeText(applicationContext, "failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Failed", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<User>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
-                Toast.makeText(applicationContext, "cant connect", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Can't Connect", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -96,5 +128,4 @@ class LoginActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
-
 }

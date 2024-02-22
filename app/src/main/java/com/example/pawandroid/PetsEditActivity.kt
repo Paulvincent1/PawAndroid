@@ -128,7 +128,7 @@ class PetsEditActivity : AppCompatActivity() {
                         editTextAge.setText(pet?.age.toString())
                         editTextBreed.setText(pet?.breed)
                         editTextDesc.setText(pet?.description)
-                        val imageUrl = "http://192.168.0.13/${pet?.img}"
+                        val imageUrl = "http://192.168.100.192/${pet?.img}"
  //                          http://192.168.100.192/ , paul = http://192.168.0.13/
                         Glide.with(applicationContext)
                             .load(imageUrl)
@@ -186,21 +186,40 @@ class PetsEditActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri = data.data
             binding.imgPetInfo.setImageURI(imageUri)
-            val imageFile = File(imageUri?.let { getRealPathFromUri(it) }) // Convert URI to File
-            val requestBody = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
-
-            imagePart = MultipartBody.Part.createFormData("img", imageFile.name, requestBody)
+            imageUri?.let { uri ->
+                try {
+                    val imageFile = File(getRealPathFromUri(uri)) // Convert URI to File
+                    if (imageFile.exists()) {
+                        val requestBody = imageFile.asRequestBody("image/*".toMediaTypeOrNull())
+                        imagePart = MultipartBody.Part.createFormData("img", imageFile.name, requestBody)
+                    } else {
+                        Log.e("PostAdoptionActivity", "File does not exist")
+                        Toast.makeText(this, "File does not exist", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    Log.e("PostAdoptionActivity", "Failed to get file from URI", e)
+                    Toast.makeText(this, "Failed to get file from URI", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
-
     private fun getRealPathFromUri(uri: Uri): String {
-        val projection = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor = contentResolver.query(uri, projection, null, null, null)
-        cursor?.moveToFirst()
-        val columnIndex = cursor?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-        val path = cursor?.getString(columnIndex ?: 0)
-        cursor?.close()
-        return path ?: ""
+        var filePath = ""
+        try {
+            val cursor = contentResolver.query(uri, null, null, null, null)
+            cursor?.use { cursor ->
+                if (cursor.moveToFirst()) {
+                    val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                    filePath = cursor.getString(columnIndex)
+                    Log.d("shit", "File path: $filePath")
+                } else {
+                    Log.e("PostAdoptionActivity", "Cursor moveToFirst failed")
+                }
+            } ?: Log.e("PostAdoptionActivity", "Cursor is null")
+        } catch (e: Exception) {
+            Log.e("PostAdoptionActivity", "Failed to get file path from URI", e)
+        }
+        return filePath
     }
 
     private fun openImagePicker() {
