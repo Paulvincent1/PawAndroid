@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
+import android.text.SpannableString
 import android.text.TextWatcher
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +40,10 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this@LoginActivity, SignupActivity::class.java)
                 startActivity(intent)
             }
+            // Underline the text in tvSignup
+            val content = SpannableString(tvSignup.text)
+            content.setSpan(UnderlineSpan(), 0, content.length, 0)
+            tvSignup.text = content
 
             // Create a TextWatcher for the password EditText
             tilPassword.addTextChangedListener(object : TextWatcher {

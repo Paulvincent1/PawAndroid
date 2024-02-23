@@ -1,24 +1,27 @@
 package com.example.pawandroid.adapter
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pawandroid.IncomingRequestDetailActivity
-import com.example.pawandroid.YourAcceptedRequestDetailActivity
+import com.example.pawandroid.R
+import com.example.pawandroid.databinding.AdoptionStatusListBinding
 import com.example.pawandroid.databinding.IncomingRequestListBinding
 import com.example.pawandroid.model.Adopt
 
-class YourAcceptedRequestAdapter(var adoptlist: MutableList<Adopt>): RecyclerView.Adapter<YourAcceptedRequestAdapter.ViewHolder>() {
+class AdoptionStatusAdapter  (var adoptlist: MutableList<Adopt>): RecyclerView.Adapter<AdoptionStatusAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: IncomingRequestListBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: AdoptionStatusListBinding): RecyclerView.ViewHolder(binding.root)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YourAcceptedRequestAdapter.ViewHolder {
-        val view = IncomingRequestListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdoptionStatusAdapter.ViewHolder {
+        val view = AdoptionStatusListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return ViewHolder(view)
     }
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = adoptlist[position]
 
@@ -35,14 +38,19 @@ class YourAcceptedRequestAdapter(var adoptlist: MutableList<Adopt>): RecyclerVie
                 .into(imageView)
 
             tvRequesterName.text = currentItem.name
-            tcContact.text = currentItem.contact_number
+            when(currentItem.status){
+                "accepted" ->{
+                    tvStatus.text = "Accepted"
+                    tvStatus.setTextColor(R.color.green)
+                }
+                "rejected"-> {
+                    tvStatus.text = "Rejected"
+                    tvStatus.setTextColor(R.color.red)
+                }
 
-            rvList.setOnClickListener {
-                val intent = Intent(holder.itemView.context, YourAcceptedRequestDetailActivity::class.java)
-                intent.putExtra("key", currentItem.id.toString())
-                intent.putExtra("userid", currentItem.userid.toString())
-                holder.itemView.context.startActivity(intent)
             }
+            tvStatus.text = currentItem.status
+
 
         }
 

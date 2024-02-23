@@ -15,6 +15,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.pawandroid.AdoptionStatusActivity
 import com.example.pawandroid.IncomingRequestActivity
+import com.example.pawandroid.LoginActivity
 import com.example.pawandroid.MyProfileActivity
 import com.example.pawandroid.MyRequestActivity
 import com.example.pawandroid.PostAdoptionActivity
@@ -55,6 +56,10 @@ class ProfileActivity : AppCompatActivity() {
         }
         binding.tvProfile.setOnClickListener {
             val intent =Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.logoutBtn.setOnClickListener {
+            val intent =Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
 
@@ -193,7 +198,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
+                        "http://192.168.43.156/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {
