@@ -109,6 +109,9 @@ interface PawService {
         @Field("additional_comment") additional_comment: String
     ): Call<Adopt>
 
+
+    @GET("pending-request")
+    fun getYourRequestList() : Call<List<Adopt>>
     //My request
     @GET("my-requests")
     fun getMyRequestList() : Call<List<Adopt>>

@@ -5,4 +5,8 @@
     <color name="midgreen">#9EC1A2</color>
     <color name="newPrimaryDarkGreen">#435334</color>
     <color name="midPurple">#c8b6ff</color>
+    <color name="blue">#0000FF</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#008000</color>
+
 </resources>

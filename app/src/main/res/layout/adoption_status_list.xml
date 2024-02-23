@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/rvRequested"
         android:layout_width="391dp"
-        android:layout_height="match_parent"
+        android:layout_height="158dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="#ffffff"
@@ -21,7 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rvList"
             android:layout_width="match_parent"
-            android:layout_height="163dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:background="#ffffff"
             app:layout_constraintBottom_toBottomOf="@+id/tvNamePet"
@@ -35,13 +35,13 @@
                 android:id="@+id/tvRequesterName"
                 android:layout_width="230dp"
                 android:layout_height="20dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="16dp"
                 android:background="#ffffff"
-                android:text="Requester Name"
+                android:text="James Yap"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.111" />
+                app:layout_constraintVertical_bias="0.131" />
 
             <TextView
                 android:id="@+id/tvNamePet"
@@ -54,9 +54,10 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.815" />
+                app:layout_constraintVertical_bias="0.866" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView"
@@ -70,26 +71,15 @@
                 app:layout_constraintVertical_bias="0.213" />
 
             <TextView
-                android:id="@+id/tcContact"
-                android:layout_width="220dp"
-                android:layout_height="21dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="20dp"
-                android:text="0931243234"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvRequesterName"
-                app:layout_constraintTop_toBottomOf="@+id/tvRequesterName" />
-
-            <TextView
-                android:id="@+id/tvViewDetails"
+                android:id="@+id/tvStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="44dp"
-                android:text="View Details"
+                android:layout_marginEnd="48dp"
+                android:text="Done"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.722" />
+                app:layout_constraintVertical_bias="0.804" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
