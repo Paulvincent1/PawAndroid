@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/midgreen"
+    android:background="@drawable/bg_gradient"
     style="@style/custom_card_view_style"
     tools:context=".SignupActivity">
 

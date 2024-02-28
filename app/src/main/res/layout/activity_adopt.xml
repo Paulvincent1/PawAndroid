@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/midgreen"
+    android:background="@drawable/bg_gradient"
     tools:context=".AdoptActivity">
 
 
@@ -172,7 +172,12 @@
                 <EditText
                     android:id="@+id/editText_whyAdopt"
                     android:layout_width="match_parent"
-                    android:layout_height="257dp" />
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:lines="10"
+                    android:minLines="5"
+                    android:maxLines="20"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

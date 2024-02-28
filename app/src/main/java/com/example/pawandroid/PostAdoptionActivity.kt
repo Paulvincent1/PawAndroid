@@ -10,6 +10,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import com.example.pawandroid.adapter.provincesAdapter
 import com.example.pawandroid.bottomNav.MainActivity
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityPostAdoptionBinding
@@ -68,6 +69,24 @@ class PostAdoptionActivity : AppCompatActivity() {
             }
         }
 
+
+        val provincesSpinner = findViewById<Spinner>(R.id.editText_Provinces)
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        val provincesAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.provinces_array,
+            android.R.layout.simple_spinner_item
+        )
+
+        // Specify the layout to use when the list of choices appears
+        provincesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        // Set the adapter to the spinner
+        provincesSpinner.adapter = provincesAdapter
+
+        // Set a prompt without adding it to the item list
+        provincesSpinner.prompt = "Select Provinces"
 
 
 

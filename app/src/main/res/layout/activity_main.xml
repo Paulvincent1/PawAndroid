@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bottomNav.MainActivity"
-    android:background="@color/midgreen">
+    android:background="@drawable/bg_gradient">
 
     <!-- Horizontal LinearLayout below the MaterialCardView -->
 
@@ -15,6 +15,45 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp">
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="20dp"
+                android:text="Hi,"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="!"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.185"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,17 +66,20 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginStart="200dp"
                 android:src="@drawable/person_home_ic"
                 app:layout_constraintBottom_toTopOf="@id/materialCardView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
+
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView"
                 android:layout_width="355dp"
                 android:layout_height="94dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="80dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="12dp"
                 app:cardUseCompatPadding="true"
@@ -79,19 +121,22 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="459dp">
+                    android:layout_height="430dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvHome"
                         android:layout_width="375dp"
-                        android:layout_height="421dp"
+                        android:layout_height="match_parent"
                         android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.444"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.973" />
+                        app:layout_constraintVertical_bias="0.373" />
 
                     <ProgressBar
                         android:id="@+id/progressBar3"
@@ -106,15 +151,15 @@
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/posttoAdopt"
+                        style="@style/CircularFloatingActionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:src="@drawable/baseline_add_24"
                         android:layout_marginBottom="16dp"
+                        android:backgroundTint="@color/midgreen"
+                        android:src="@drawable/baseline_add_24"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        style="@style/CircularFloatingActionButton"
-                        android:backgroundTint="@color/midgreen"/>
+                        app:layout_constraintEnd_toEndOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -125,7 +170,7 @@
             <TextView
                 android:layout_width="264dp"
                 android:layout_height="41dp"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="172dp"
                 android:text="Find Your New BestFriend"
                 android:textColor="@color/black"
                 android:textSize="20dp"

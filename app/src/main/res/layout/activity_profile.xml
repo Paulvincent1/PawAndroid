@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
     tools:context=".bottomNav.HistoryActivity">
 
     <FrameLayout
@@ -30,6 +31,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone"/>
 
+
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView"
                 android:layout_width="200dp"
@@ -43,14 +46,28 @@
                 app:shapeAppearance="@style/circular" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/baseline_edit_24"
+                android:text="Change Photo"
+                android:textColor="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.538"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:text="Name of the User"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView" />
 
@@ -61,6 +78,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="280dp"
                 android:layout_marginEnd="20dp"
+                app:cardElevation="20dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -72,53 +90,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="100dp"
-                            android:orientation="vertical"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.5" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#FFFDFD" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#FFFDFD" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/tvProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/midgreen"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:paddingTop="5dp"
-                        android:drawableLeft="@drawable/arrow_pet_info"
                         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="15dp"
                         android:paddingBottom="5dp"
-                        android:text="My Profile"
+                        android:text="Click to Check your Profile"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <LinearLayout
                         android:id="@+id/btnGoingtoEvents"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:paddingTop="8dp"
                         android:paddingBottom="8dp">
 
@@ -155,6 +145,7 @@
                             android:entries="@array/giveUp_pet"
                             android:inputType="textPersonName"
                             android:paddingStart="20dp"
+                            android:layout_marginEnd="25dp"
                             android:paddingEnd="40dp"
                             android:spinnerMode="dialog"
                             android:text="Gender"
@@ -168,7 +159,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:paddingBottom="8dp"
+                        android:layout_marginTop="20dp">
 
 
                         <TextView
@@ -196,6 +188,7 @@
                             android:layout_height="58dp"
                             android:entries="@array/AdoptPet"
                             android:inputType="textPersonName"
+                            android:layout_marginEnd="25dp"
                             android:paddingStart="20dp"
                             android:paddingEnd="40dp"
                             android:spinnerMode="dialog"
@@ -213,13 +206,17 @@
                 style="@android:style/Widget.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:text="Logout"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.988"
+                android:drawableLeft="@drawable/baseline_logout_24"
+                android:backgroundTint="@color/midgreen"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

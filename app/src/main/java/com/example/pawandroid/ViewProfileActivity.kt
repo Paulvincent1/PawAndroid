@@ -89,7 +89,7 @@ class ViewProfileActivity : AppCompatActivity() {
                         binding.tvNameProfile.text = user.name
                         binding.emailText.text = user.email
                         val imageUrl = if (!user.img.isNullOrEmpty()) {
-                            "http://192.168.43.156/${user.img}"
+                            "http://192.168.100.192/${user.img}"
                             // paul =  http://192.168.0.13/
                             //  nath =  http://192.168.100.192/
                         } else {
