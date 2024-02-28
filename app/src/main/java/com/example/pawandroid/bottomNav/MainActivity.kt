@@ -32,10 +32,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private var floatingadd: String? = null
     private var imgProfile: String? = null
+    private var userID: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.tvUsername.text = userID
+
+
 
         binding.posttoAdopt.setOnClickListener {
             val intent = Intent(this, PostAdoptionActivity::class.java)
@@ -107,6 +112,16 @@ class MainActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
+                R.id.nav_notifications -> {
+                    // Start MainActivity and clear the back stack
+                    val intent = Intent(this, NotificationsActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    startActivity(intent)
+                    finish() // Finish PetsActivity to prevent returning to it when pressing back
+                    overridePendingTransition(0, 0)
+                    true
+                }
+
                 R.id.nav_profile -> {
                     // Start MainActivity and clear the back stack
                     val intent = Intent(this, ProfileActivity::class.java)

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.pawandroid.AdoptionStatusActivity
 import com.example.pawandroid.IncomingRequestActivity
 import com.example.pawandroid.LoginActivity
@@ -93,6 +94,15 @@ class ProfileActivity : AppCompatActivity() {
                 R.id.nav_history -> {
                     // Start MainActivity and clear the back stack
                     val intent = Intent(this, HistoryActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    startActivity(intent)
+                    finish() // Finish PetsActivity to prevent returning to it when pressing back
+                    overridePendingTransition(0, 0)
+                    true
+                }
+                R.id.nav_notifications -> {
+                    // Start MainActivity and clear the back stack
+                    val intent = Intent(this, NotificationsActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                     startActivity(intent)
                     finish() // Finish PetsActivity to prevent returning to it when pressing back
@@ -198,7 +208,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.43.156/${response?.img}"
+                        "http://192.168.100.192/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {
@@ -206,8 +216,8 @@ class ProfileActivity : AppCompatActivity() {
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
                     }
                     Glide.with(applicationContext)
-                        .load(imgUrl
-                        )
+                        .load(imgUrl)
+                        .transform(CircleCrop())
                         .into(binding.imageView)
                 }
             }

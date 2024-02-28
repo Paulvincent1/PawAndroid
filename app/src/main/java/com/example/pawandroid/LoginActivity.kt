@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
                 val intent = Intent(this@LoginActivity, SignupActivity::class.java)
                 startActivity(intent)
             }
+
             // Underline the text in tvSignup
             val content = SpannableString(tvSignup.text)
             content.setSpan(UnderlineSpan(), 0, content.length, 0)

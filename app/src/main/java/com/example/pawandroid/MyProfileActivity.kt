@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.pawandroid.adapter.HomeAdapter
 import com.example.pawandroid.adapter.MyProfileAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
@@ -89,7 +90,7 @@ class MyProfileActivity : AppCompatActivity() {
                     getUserPets(userId!!.toInt())
 
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.43.156/${response?.img}"
+                        "http://192.168.100.192/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {
@@ -97,8 +98,8 @@ class MyProfileActivity : AppCompatActivity() {
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
                     }
                     Glide.with(applicationContext)
-                        .load(imgUrl
-                        )
+                        .load(imgUrl)
+                        .transform(CircleCrop())
                         .into(binding.imageView2)
                 }
             }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".YourAcceptedRequestDetailActivity">
+    tools:context=".YourAcceptedRequestDetailActivity"
+    android:background="@drawable/bg_gradient">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:text="TextView" />
+        android:text="PetName" />
 
     <TextView
         android:id="@+id/tvRequesterNamee"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginStart="70dp"
-        android:text="TextView" />
+        android:text="Requester" />
 
     <TextView
         android:id="@+id/tvAddressss"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="8dp"
-        android:text="TextView" />
+        android:text="Address" />
 
     <TextView
         android:id="@+id/tvCity"
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="8dp"
-        android:text="TextView" />
+        android:text="City" />
 
     <TextView
         android:id="@+id/TvContactNumber"
@@ -53,7 +54,7 @@
         android:layout_marginStart="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView" />
+        android:text="Contact #" />
 
     <TextView
         android:id="@+id/tvAddtionalComment"
@@ -61,7 +62,7 @@
         android:layout_marginStart="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView" />
+        android:text="Additional Comment" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,7 +77,6 @@
             android:layout_height="wrap_content"
             android:text="View Profile"
             android:textSize="11dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -84,7 +84,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 

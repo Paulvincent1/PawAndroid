@@ -8,12 +8,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HistoryAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityHistoryBinding
 import com.example.pawandroid.databinding.ActivityMainBinding
+import com.example.pawandroid.databinding.ActivityNotificationsBinding
 import com.example.pawandroid.model.History
 import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,26 +23,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HistoryActivity : AppCompatActivity() {
-    private var floatingadd: String? = null
-    private lateinit var binding: ActivityHistoryBinding
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var historyAdapter: HistoryAdapter
-    private lateinit var historyList: MutableList<History>
+class NotificationsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityNotificationsBinding
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        binding = ActivityNotificationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.posttoAdopt.setOnClickListener {
-            val intent = Intent(this, PostAdoptionActivity::class.java)
-            intent.putExtra("key", floatingadd)
-            startActivity(intent)
-
-        }
-        init()
-        getHistoryList()
 
 
 
@@ -48,7 +39,7 @@ class HistoryActivity : AppCompatActivity() {
 
         // Set the selected item in the BottomNavigationView
         bottomNavigation.selectedItemId =
-            R.id.nav_history// Assuming "Search" is the current activity
+            R.id.nav_notifications// Assuming "Search" is the current activity
 
         bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -70,18 +61,19 @@ class HistoryActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_history -> {
-                    true
-                }
-
-                R.id.nav_notifications -> {
                     // Start MainActivity and clear the back stack
-                    val intent = Intent(this, NotificationsActivity::class.java)
+                    val intent = Intent(this, HistoryActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                     startActivity(intent)
                     finish() // Finish PetsActivity to prevent returning to it when pressing back
                     overridePendingTransition(0, 0)
                     true
+                    true
                 }
+                R.id.nav_notifications -> {
+                    true
+                }
+
                 R.id.nav_profile -> {
                     // Start MainActivity and clear the back stack
                     val intent = Intent(this, ProfileActivity::class.java)
@@ -91,36 +83,12 @@ class HistoryActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
+
                 else -> false
             }
         }
     }
-    private fun init(){
-        recyclerView = binding.rvHistory
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        historyList = mutableListOf()
-        historyAdapter = HistoryAdapter(historyList)
-        recyclerView.adapter = historyAdapter
-    }
-    private fun getHistoryList(){
-        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
-        val call = retrofit.history()
-        call.enqueue(object : Callback<List<History>> {
-            override fun onResponse(call: Call<List<History>>, response: Response<List<History>>) {
-                if(response.isSuccessful){
-                    historyList.clear()
-                    response.body()?.let { historyList.addAll(it) }
-                    historyAdapter.notifyDataSetChanged()
-                }
-            }
 
-            override fun onFailure(call: Call<List<History>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
     override fun onBackPressed() {
         showExitConfirmationDialog()
     }

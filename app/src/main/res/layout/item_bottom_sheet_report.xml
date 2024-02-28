@@ -13,7 +13,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24" />
+            android:src="@drawable/report_icon" />
 
         <TextView
             android:id="@+id/tvReason1"
@@ -37,7 +37,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24" />
+            android:src="@drawable/report_icon" />
 
         <TextView
             android:id="@+id/tvReason2"
@@ -61,7 +61,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="10dp"
-            android:src="@drawable/baseline_report_24" />
+            android:src="@drawable/report_icon" />
 
         <TextView
             android:id="@+id/tvReason3"
