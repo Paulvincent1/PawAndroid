@@ -50,7 +50,7 @@
             android:id="@+id/rvViewProfile"
             android:layout_width="match_parent"
             android:layout_height="433dp"
-            android:background="@color/midgreen"
+            android:background="@color/Secondary"
             android:paddingEnd="30dp"
             android:paddingStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

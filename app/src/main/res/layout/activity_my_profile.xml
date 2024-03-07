@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/Headline_Stroke"
         android:text="TextView"
         android:textSize="20dp"
         android:textStyle="bold"/>
@@ -35,6 +36,7 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             android:layout_margin="5dp"/>
+
     </com.google.android.material.card.MaterialCardView>
 
     <ProgressBar

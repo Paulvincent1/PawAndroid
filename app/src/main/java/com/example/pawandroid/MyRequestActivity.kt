@@ -54,6 +54,7 @@ class MyRequestActivity : AppCompatActivity() {
     private fun getRequestList(){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.getMyRequestList()
+        Toast.makeText(applicationContext, "get pet", Toast.LENGTH_SHORT).show()
         binding.progressBar5.visibility = View.VISIBLE
         call.enqueue(object : Callback<List<Adopt>> {
             override fun onResponse(call: Call<List<Adopt>>, response: Response<List<Adopt>>) {

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:id="@+id/searchlist"
-    android:background="@color/midgreen">
+    android:background="@color/Headline_Stroke">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivPlace"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivPlace"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="17sp"
-        android:textColor="@color/black"
+        android:textColor="@color/Secondary"
         android:textStyle="bold" />
 
 

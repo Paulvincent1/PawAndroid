@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.pawandroid.PetInfoActivity
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
@@ -19,6 +21,7 @@ import com.example.pawandroid.adapter.HomeAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityMainBinding
 import com.example.pawandroid.model.Pets
+import com.example.pawandroid.model.User
 import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getCurrentUser()
 
         binding.tvUsername.text = userID
 
@@ -112,15 +116,7 @@ class MainActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_notifications -> {
-                    // Start MainActivity and clear the back stack
-                    val intent = Intent(this, NotificationsActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    startActivity(intent)
-                    finish() // Finish PetsActivity to prevent returning to it when pressing back
-                    overridePendingTransition(0, 0)
-                    true
-                }
+
 
                 R.id.nav_profile -> {
                     // Start MainActivity and clear the back stack
@@ -199,4 +195,24 @@ class MainActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
-}
+        private fun getCurrentUser(){
+            val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+            val call = retrofit.getCurrentUser()
+            call.enqueue(object : Callback<User> {
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if(response.isSuccessful){
+                        val response = response?.body()
+
+                        userID = response?.id.toString()
+                        binding.tvUsername.text = response?.name
+
+                    }
+                }
+
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        }
+    }

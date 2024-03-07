@@ -90,7 +90,7 @@ class MyProfileActivity : AppCompatActivity() {
                     getUserPets(userId!!.toInt())
 
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.100.192/${response?.img}"
+                        "https://pawadoptpaw.online/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {
