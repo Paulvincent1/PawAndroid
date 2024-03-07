@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".YourAcceptedRequestDetailActivity"
-    android:background="@drawable/bg_gradient">
+    android:background="@drawable/pet_bg">
 
     <ImageView
         android:id="@+id/imageView3"

@@ -27,7 +27,7 @@ class MyProfileAdapter (var petlist: MutableList<Pets>): RecyclerView.Adapter<My
 
             // Bind other views here if needed
 
-            val imageUrl = "http://192.168.100.192/${currentItem.img}"
+            val imageUrl = "https://pawadoptpaw.online/${currentItem.img}"
 //                          http://192.168.100.192/ , paul = http://192.168.0.13/
 
             tvPetName.text = currentItem.name

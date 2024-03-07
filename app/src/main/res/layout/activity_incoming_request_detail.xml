@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
+        android:textColor="@color/Headline_Stroke"
         android:textSize="15sp"
         android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true"
@@ -33,6 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:textColor="@color/Headline_Stroke"
         android:layout_below="@+id/tvPetnamee"
         android:layout_marginTop="16dp"
         android:text="Requester Name"/>
@@ -41,6 +43,7 @@
         android:id="@+id/tvAddressss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/Headline_Stroke"
         android:layout_marginLeft="40dp"
         android:layout_below="@+id/tvRequesterNamee"
         android:layout_marginTop="16dp"
@@ -51,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:textColor="@color/Headline_Stroke"
         android:layout_below="@+id/tvAddressss"
         android:layout_marginTop="16dp"
         android:text="City"/>
@@ -60,6 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:textColor="@color/Headline_Stroke"
         android:layout_below="@+id/tvCity"
         android:layout_marginTop="16dp"
         android:text="Contact #"/>
@@ -69,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:textColor="@color/Headline_Stroke"
         android:layout_below="@+id/TvContactNumber"
         android:layout_marginTop="16dp"
         android:text="Additional Comment"/>
@@ -84,6 +90,7 @@
           android:id="@+id/btnViewProfilee"
           android:layout_width="0dp"
           android:layout_weight="1"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="ViewProfile"/>
 
@@ -91,6 +98,7 @@
           android:id="@+id/btnAcceptt"
           android:layout_width="0dp"
           android:layout_weight="1"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="Accept"/>
 
@@ -98,6 +106,7 @@
           android:id="@+id/btnRejectt"
           android:layout_width="0dp"
           android:layout_weight="1"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="Reject"/>
   </LinearLayout>

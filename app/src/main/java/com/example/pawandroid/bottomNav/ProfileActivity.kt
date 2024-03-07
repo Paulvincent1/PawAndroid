@@ -62,6 +62,7 @@ class ProfileActivity : AppCompatActivity() {
         binding.logoutBtn.setOnClickListener {
             val intent =Intent(this,LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -100,15 +101,7 @@ class ProfileActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_notifications -> {
-                    // Start MainActivity and clear the back stack
-                    val intent = Intent(this, NotificationsActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    startActivity(intent)
-                    finish() // Finish PetsActivity to prevent returning to it when pressing back
-                    overridePendingTransition(0, 0)
-                    true
-                }
+               
 
                 R.id.nav_profile -> {
                     true
@@ -208,7 +201,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.100.192/${response?.img}"
+                        "https://pawadoptpaw.online/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {

@@ -107,15 +107,7 @@ class PetsActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_notifications -> {
-                    // Start MainActivity and clear the back stack
-                    val intent = Intent(this, NotificationsActivity::class.java)
-                        .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                    startActivity(intent)
-                    finish() // Finish PetsActivity to prevent returning to it when pressing back
-                    overridePendingTransition(0, 0)
-                    true
-                }
+
                 R.id.nav_profile -> {
                     // Start MainActivity and clear the back stack
                     val intent = Intent(this, ProfileActivity::class.java)

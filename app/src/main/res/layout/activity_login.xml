@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:background="@drawable/bg_gradient">
+    android:background="@color/Secondary">
 
     <ImageView
         android:layout_width="77dp"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Login"
-        android:textColor="@color/black"
+        android:textColor="@color/Headline_Stroke"
         android:textSize="30dp"
         android:textStyle="bold"
         android:layout_marginStart="20dp"/>
@@ -46,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="32dp"
+                android:textColor="@color/Secondary"
                 android:text="Hi Welcome \nBack!"/>
 
             <EditText
@@ -55,16 +56,16 @@
                 android:layout_marginTop="24dp"
                 android:layout_gravity="center"
                 android:background="@drawable/custom_edittext_2nd"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableLeft="@drawable/baseline_email_24"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/white"
+                android:textColor="@color/Headline_Stroke"
                 android:hint="Username/Email:"
                 android:inputType="textEmailAddress"
                 android:maxEms="50"
                 android:maxLines="1"
                 android:padding="10dp"
-                android:textColorHint="@color/white"/>
+                android:textColorHint="@color/Headline_Stroke"/>
 
             <EditText
                 android:id="@+id/tilPassword"
@@ -73,16 +74,16 @@
                 android:layout_marginTop="24dp"
                 android:layout_gravity="center"
                 android:background="@drawable/custom_edittext_2nd"
-                android:drawableLeft="@drawable/ic_password"
+                android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="10dp"
                 android:ems="30"
-                android:textColor="@color/white"
+                android:textColor="@color/Headline_Stroke"
                 android:gravity="center_vertical"
                 android:hint="Password:"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="10dp"
-                android:textColorHint="@color/white"/>
+                android:textColorHint="@color/Headline_Stroke"/>
 
             <!-- Existing layout code above -->
 
@@ -99,15 +100,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="@color/Secondary"
                     android:text="Show Password"
-                    android:layout_marginStart="20dp"/>
+                    android:layout_marginStart="20dp"
+                    android:buttonTint="@color/Secondary"/>
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
-                    android:text="Forgot Password?"/>
+                    android:text="Forgot Password?"
+                    android:textColor="@color/Secondary"/>
 
             </LinearLayout>
 
@@ -139,13 +143,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Don't have an account?"
-                    android:layout_marginStart="65dp"/>
+                    android:layout_marginStart="65dp"
+                    android:textColor="@color/Secondary"/>
 
                 <TextView
                     android:id="@+id/tvSignup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/Highlight_Buttons"
                     android:text="Sign Up" />
             </LinearLayout>
 
@@ -172,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
                 android:text="Terms of Service"
-                android:textColor="@color/black"/>
+                android:textColor="@color/Secondary"/>
 
             <TextView
                 android:id="@+id/textView2"
@@ -180,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Privacy policy"
-                android:textColor="@color/black"/>
+                android:textColor="@color/Secondary"/>
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

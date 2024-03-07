@@ -128,7 +128,7 @@ class PetsEditActivity : AppCompatActivity() {
                         editTextAge.setText(pet?.age.toString())
                         editTextBreed.setText(pet?.breed)
                         editTextDesc.setText(pet?.description)
-                        val imageUrl = "http://192.168.43.156/${pet?.img}"
+                        val imageUrl = "https://pawadoptpaw.online/${pet?.img}"
  //                          http://192.168.100.192/ , paul = http://192.168.0.13/
                         Glide.with(applicationContext)
                             .load(imageUrl)

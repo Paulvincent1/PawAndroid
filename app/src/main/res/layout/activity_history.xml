@@ -15,7 +15,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/pet_bg">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/posttoAdopt"
@@ -27,7 +28,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 style="@style/CircularFloatingActionButton"
-                android:backgroundTint="@color/midgreen"/>
+                android:backgroundTint="@color/Secondary"/>
 
             <LinearLayout
                 android:id="@+id/linearContainer"
@@ -64,7 +65,7 @@
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        app:itemBackground="@color/midgreen"
+        app:itemBackground="@color/Secondary"
         app:itemTextColor="@color/white"/>
 
 

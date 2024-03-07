@@ -5,23 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IncomingRequestActivity">
+    tools:context=".IncomingRequestActivity"
+    android:background="@drawable/pet_bg">
 
 
-    <View
-        android:id="@+id/top_view"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/bg_view"/>
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Incoming request"
         android:textStyle="bold"
+        android:textColor="@color/Headline_Stroke"
         android:layout_marginTop="60dp"
         android:textSize="20dp"
-        android:layout_centerVertical="@+id/top_view"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout

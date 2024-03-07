@@ -5,8 +5,13 @@
     <color name="midgreen">#9EC1A2</color>
     <color name="newPrimaryDarkGreen">#435334</color>
     <color name="midPurple">#c8b6ff</color>
+    <color name="green">#c8b6ff</color>
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
-    <color name="green">#008000</color>
-
+    <color name="Background">#FFFFFE</color>
+    <color name="Headline_Stroke">#272343</color>
+    <color name="Paragraph">#2D334A</color>
+    <color name="Highlight_Buttons">#FFD803</color>
+    <color name="Secondary">#E3F6F5</color>
+    <color name="Tertiary">#BAE8E8</color>
 </resources>

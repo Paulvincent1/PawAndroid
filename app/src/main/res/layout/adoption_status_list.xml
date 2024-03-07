@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="16dp"
-            android:background="#ffffff">
+            android:background="@color/Headline_Stroke">
 
 
             <TextView
@@ -32,7 +32,7 @@
                 android:layout_width="213dp"
                 android:layout_height="19dp"
                 android:layout_marginEnd="16dp"
-                android:background="#ffffff"
+                android:textColor="@color/Secondary"
                 android:text="James Yap"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -43,9 +43,9 @@
                 android:id="@+id/tvNamePet"
                 android:layout_width="161dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginEnd="212dp"
                 android:text="Name"
+                android:textColor="@color/Secondary"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="124dp"
                 android:text="Done"
+                android:textColor="@color/Secondary"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
