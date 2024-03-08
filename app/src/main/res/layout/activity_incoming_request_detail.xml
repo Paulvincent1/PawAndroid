@@ -90,7 +90,7 @@
           android:id="@+id/btnViewProfilee"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Secondary"
+          android:textColor="@color/Headline_Stroke"
           android:layout_height="wrap_content"
           android:text="ViewProfile"/>
 
@@ -98,7 +98,7 @@
           android:id="@+id/btnAcceptt"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Secondary"
+          android:textColor="@color/Headline_Stroke"
           android:layout_height="wrap_content"
           android:text="Accept"/>
 
@@ -106,7 +106,7 @@
           android:id="@+id/btnRejectt"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Secondary"
+          android:textColor="@color/Headline_Stroke"
           android:layout_height="wrap_content"
           android:text="Reject"/>
   </LinearLayout>

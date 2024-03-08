@@ -13,7 +13,7 @@ import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HistoryAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityHistoryBinding
-import com.example.pawandroid.databinding.ActivityMainBinding
+import com.example.pawandroid.databinding.ActivityPetFlexBinding
 import com.example.pawandroid.model.History
 import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,34 +21,20 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HistoryActivity : AppCompatActivity() {
-    private var floatingadd: String? = null
-    private lateinit var binding: ActivityHistoryBinding
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var historyAdapter: HistoryAdapter
-    private lateinit var historyList: MutableList<History>
-    @SuppressLint("MissingInflatedId")
+class PetFlexActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPetFlexBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        binding = ActivityPetFlexBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.posttoAdopt.setOnClickListener {
-            val intent = Intent(this, PostAdoptionActivity::class.java)
-            intent.putExtra("key", floatingadd)
-            startActivity(intent)
-
-        }
-        init()
-        getHistoryList()
-
 
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         // Set the selected item in the BottomNavigationView
         bottomNavigation.selectedItemId =
-            R.id.nav_history// Assuming "Search" is the current activity
+            R.id.nav_fav// Assuming "Search" is the current activity
 
         bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -70,15 +56,15 @@ class HistoryActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_fav -> {
-                    // Start MainActivity and clear the back stack
-                    val intent = Intent(this, PetFlexActivity::class.java)
+                    // Do nothing, already in PetFlexActivity
+                    true
+                }
+                R.id.nav_history -> {
+                    val intent = Intent(this, HistoryActivity::class.java)
                         .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                     startActivity(intent)
                     finish() // Finish PetsActivity to prevent returning to it when pressing back
                     overridePendingTransition(0, 0)
-                    true
-                }
-                R.id.nav_history -> {
                     true
                 }
 
@@ -95,32 +81,7 @@ class HistoryActivity : AppCompatActivity() {
             }
         }
     }
-    private fun init(){
-        recyclerView = binding.rvHistory
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        historyList = mutableListOf()
-        historyAdapter = HistoryAdapter(historyList)
-        recyclerView.adapter = historyAdapter
-    }
-    private fun getHistoryList(){
-        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
-        val call = retrofit.history()
-        call.enqueue(object : Callback<List<History>> {
-            override fun onResponse(call: Call<List<History>>, response: Response<List<History>>) {
-                if(response.isSuccessful){
-                    historyList.clear()
-                    response.body()?.let { historyList.addAll(it) }
-                    historyAdapter.notifyDataSetChanged()
-                }
-            }
 
-            override fun onFailure(call: Call<List<History>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-    }
     override fun onBackPressed() {
         showExitConfirmationDialog()
     }
