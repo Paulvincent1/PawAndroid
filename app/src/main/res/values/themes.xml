@@ -2,10 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.PawAndroid" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="colorPrimary">@color/Secondary</item>
         <item name="colorPrimaryVariant">@color/Headline_Stroke</item>
-        <item name="colorSecondaryVariant">@color/Secondary</item>
-        <item name="colorSecondary">@color/Secondary</item>
+        <item name="colorSecondaryVariant">@color/Headline_Stroke</item>
+        <item name="colorSecondary">@color/Headline_Stroke</item>
         <item name="android:statusBarColor" tools:targetApi="l"> ?attr/colorPrimaryVariant</item>
     </style>
 
