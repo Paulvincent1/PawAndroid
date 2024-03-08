@@ -13,6 +13,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent" >
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -30,6 +31,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone"/>
 
+            <View
+                android:id="@+id/top_view"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/bg_view"/>
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -95,15 +101,16 @@
                         android:id="@+id/tvProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/midgreen"
+                        android:background="@color/Headline_Stroke"
                         android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
                         android:paddingStart="15dp"
                         android:paddingTop="5dp"
                         android:paddingEnd="15dp"
                         android:paddingBottom="5dp"
                         android:text="Click to Check your Profile"
-                        android:textColor="@color/black"
-                        android:textSize="15sp" />
+                        android:textColor="@color/Secondary"
+                        android:textSize="15sp"
+                        android:textAlignment="textStart"/>
 
                     <LinearLayout
                         android:id="@+id/btnGoingtoEvents"
@@ -133,14 +140,12 @@
                     <LinearLayout
                         android:id="@+id/btnPendingTickets"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:layout_height="wrap_content">
 
 
                         <Spinner
                             android:id="@+id/editText_giveUp"
-                            android:layout_width="363dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="50dp"
                             android:entries="@array/giveUp_pet"
                             android:inputType="textPersonName"
@@ -155,12 +160,15 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#FFFDFD" />
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:layout_marginTop="20dp">
+                        android:paddingBottom="8dp">
 
 
                         <TextView
@@ -182,18 +190,15 @@
                     <LinearLayout
 
                         android:layout_width="match_parent"
-                        android:layout_height="79dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp">
+                        android:layout_height="wrap_content">
 
 
                         <Spinner
                             android:id="@+id/editText_AdoptR"
-                            android:layout_width="366dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="58dp"
                             android:entries="@array/AdoptPet"
                             android:inputType="textPersonName"
-                            android:layout_marginEnd="25dp"
                             android:paddingStart="20dp"
                             android:paddingEnd="40dp"
                             android:spinnerMode="dialog"
@@ -210,13 +215,13 @@
                 <LinearLayout
 
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/logoutBtn"
                         style="@android:style/Widget.Button"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Logout"
                         android:textColor="@color/Secondary"
@@ -227,8 +232,9 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.988"
-                        android:drawableLeft="@drawable/baseline_logout_24"
-                        android:backgroundTint="@color/Headline_Stroke"/>
+                        android:drawableRight="@drawable/baseline_logout_24"
+                        android:backgroundTint="@color/Headline_Stroke"
+                        android:textAlignment="textStart"/>
 
                 </LinearLayout>
 
@@ -250,7 +256,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:itemBackground="@color/Secondary"
-        app:itemTextColor="@color/white"/>
+        app:itemTextColor="@color/Headline_Stroke"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

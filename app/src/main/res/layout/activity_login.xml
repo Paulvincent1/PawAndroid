@@ -93,7 +93,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/tilPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:theme="@style/CustomCheckboxTheme">
 
                 <CheckBox
                     android:id="@+id/show_pass_login"
@@ -126,7 +127,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/custom_edittext_2nd"
                 android:text="Login"
-                android:textColor="@color/white"
+                android:textColor="@color/Headline_Stroke"
                 android:textSize="20dp"
                 android:textStyle="bold"/>
 

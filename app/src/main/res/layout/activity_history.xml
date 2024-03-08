@@ -66,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
         app:itemBackground="@color/Secondary"
-        app:itemTextColor="@color/white"/>
+        app:itemTextColor="@color/Headline_Stroke"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

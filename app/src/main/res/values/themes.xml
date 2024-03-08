@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.PawAndroid" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="colorPrimary">@color/Headline_Stroke</item>
+        <item name="colorPrimary">@color/Secondary</item>
         <item name="colorPrimaryVariant">@color/Headline_Stroke</item>
         <item name="colorSecondaryVariant">@color/Secondary</item>
         <item name="colorSecondary">@color/Secondary</item>
@@ -19,12 +19,20 @@
         <item name="android:color">@color/Headline_Stroke</item>
     </style>
 
+    <style name="CustomCheckboxTheme" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="colorControlNormal">@color/Secondary</item>
+        <item name="colorControlActivated">@color/Secondary</item>
+        <item name="android:textColorSecondary">@color/Secondary</item>
+    </style>
+
+
+
 
     <!--    card-->
     <style name="custom_card_view_style" parent="Widget.MaterialComponents.CardView" >
         <item name="shapeAppearanceOverlay">@style/custom_card_view</item>
         <item name="cardBackgroundColor">@color/Headline_Stroke</item>
-
+        <item name="android:theme">@style/CustomCheckboxTheme</item>
     </style>
     <style name="custom_card_view" parent="">
         <item name="cornerFamily">rounded</item>

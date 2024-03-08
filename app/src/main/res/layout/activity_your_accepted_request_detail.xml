@@ -21,8 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:text="PetName" />
+        android:layout_marginTop="1dp"
+        android:text="PetName"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvRequesterNamee"
@@ -30,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginStart="70dp"
-        android:text="Requester" />
+        android:text="Requester"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvAddressss"
@@ -38,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="8dp"
-        android:text="Address" />
+        android:text="Address"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvCity"
@@ -46,7 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="8dp"
-        android:text="City" />
+        android:text="City"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/TvContactNumber"
@@ -54,7 +58,8 @@
         android:layout_marginStart="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Contact #" />
+        android:text="Contact #"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvAddtionalComment"
@@ -62,7 +67,8 @@
         android:layout_marginStart="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Additional Comment" />
+        android:text="Additional Comment"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="match_parent"

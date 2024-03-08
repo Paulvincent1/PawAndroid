@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="0dp"
-    android:background="@color/Secondary"
+    android:background="@color/Headline_Stroke"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView

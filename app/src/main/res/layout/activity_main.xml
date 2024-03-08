@@ -38,6 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:text="Username"
+                android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
             <TextView
@@ -191,7 +193,7 @@
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/Secondary"
-        app:itemTextColor="@color/white"
+        app:itemTextColor="@color/Headline_Stroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu"
         tools:layout_editor_absoluteX="0dp">
