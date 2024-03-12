@@ -24,15 +24,19 @@
 
     <TextView
         android:id="@+id/tvPetName"
-        android:layout_width="180dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:text="James"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlace"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="17sp"
+        android:textAlignment="center"
         android:textColor="@color/Secondary"
-        android:textStyle="bold" />
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPlace"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

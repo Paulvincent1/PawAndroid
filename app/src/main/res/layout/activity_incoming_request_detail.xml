@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".IncomingRequestDetailActivity">
 
+    <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_view"/>
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView3"
         android:layout_width="200dp"
@@ -86,7 +92,7 @@
       android:layout_alignParentBottom="true"
       android:layout_marginBottom="50dp">
 
-      <Button
+      <androidx.appcompat.widget.AppCompatButton
           android:id="@+id/btnViewProfilee"
           android:layout_width="0dp"
           android:layout_weight="1"
@@ -94,7 +100,7 @@
           android:layout_height="wrap_content"
           android:text="ViewProfile"/>
 
-      <Button
+      <androidx.appcompat.widget.AppCompatButton
           android:id="@+id/btnAcceptt"
           android:layout_width="0dp"
           android:layout_weight="1"
@@ -102,7 +108,7 @@
           android:layout_height="wrap_content"
           android:text="Accept"/>
 
-      <Button
+      <androidx.appcompat.widget.AppCompatButton
           android:id="@+id/btnRejectt"
           android:layout_width="0dp"
           android:layout_weight="1"

@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.pawandroid.adapter.provincesAdapter
@@ -54,7 +56,9 @@ class PostAdoptionActivity : AppCompatActivity() {
                 val age = editTextAge.text.toString().trim()
                 val species = binding.editTextSpecies.selectedItem.toString() // Use selectedItem property to get the selected species
                 val breed = editTextBreed.text.toString().trim()
-                val gender = binding.editTextGender.selectedItem.toString() // Use selectedItem property to get the selected gender
+                val radioGroupGender = findViewById<RadioGroup>(R.id.radioGroupGender)
+                val selectedRadioButton = findViewById<RadioButton>(radioGroupGender.checkedRadioButtonId)
+                val gender = selectedRadioButton?.text.toString() // Use selectedItem property to get the selected gender
                 val region = binding.editTextProvinces.selectedItem.toString() // Use selectedItem property to get the selected region
                 val description = editTextDesc.text.toString().trim()
 

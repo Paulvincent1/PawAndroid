@@ -22,7 +22,15 @@
         android:theme="@style/Theme.PawAndroid"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ViewPetFlexActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".FlexProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostFlexActivity"
+            android:exported="false" />
         <activity
             android:name=".YourAcceptedRequestDetailActivity"
             android:exported="false" />
