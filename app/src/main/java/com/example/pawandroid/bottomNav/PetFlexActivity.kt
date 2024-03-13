@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HistoryAdapter
+import com.example.pawandroid.adapter.PetFlexAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityHistoryBinding
 import com.example.pawandroid.databinding.ActivityPetFlexBinding
 import com.example.pawandroid.model.History
+import com.example.pawandroid.model.PetSocial
 import com.example.pawandroid.service.PawService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
@@ -23,12 +25,17 @@ import retrofit2.Response
 
 class PetFlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetFlexBinding
-
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var petFlexList :MutableList<PetSocial>
+    private lateinit var petFlexAdapter: PetFlexAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPetFlexBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        init()
+        getPetSocial()
 
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
@@ -105,5 +112,36 @@ class PetFlexActivity : AppCompatActivity() {
 
         val dialog = builder.create()
         dialog.show()
+    }
+    private fun init(){
+        recyclerView = binding.rvPetFlex
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        petFlexList = mutableListOf()
+        petFlexAdapter = PetFlexAdapter(petFlexList, applicationContext)
+        recyclerView.adapter = petFlexAdapter
+    }
+
+    private fun getPetSocial(){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.petsocial()
+        call.enqueue(object : Callback<List<PetSocial>> {
+            override fun onResponse(
+                call: Call<List<PetSocial>>,
+                response: Response<List<PetSocial>>
+            ) {
+                if (response.isSuccessful){
+                    val petsocial =  response.body()!!
+                    petFlexList.clear()
+                    petFlexList.addAll(petsocial)
+                    petFlexAdapter.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<List<PetSocial>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Error Occurred", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }

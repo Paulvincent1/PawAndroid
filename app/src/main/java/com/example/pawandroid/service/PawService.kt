@@ -3,6 +3,7 @@ package com.example.pawandroid.service
 import com.example.pawandroid.model.Adopt
 import com.example.pawandroid.model.History
 import com.example.pawandroid.model.PetResponse
+import com.example.pawandroid.model.PetSocial
 import com.example.pawandroid.model.Pets
 import com.example.pawandroid.model.User
 import com.example.pawandroid.model.ViewProfile
@@ -163,5 +164,13 @@ interface PawService {
     @GET("history")
     fun history(): Call<List<History>>
 
+    @GET("pet-social")
+    fun petsocial(): Call<List<PetSocial>>
+
+    @POST("pet-social/{id}/like")
+    fun like(@Path("id") id: Int): Call<Unit>
+
+    @POST("pet-social/{id}/unlike")
+    fun unlike(@Path("id") id: Int): Call<Unit>
 
 }
