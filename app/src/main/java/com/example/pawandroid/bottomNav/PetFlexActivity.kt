@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pawandroid.FlexProfileActivity
 import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HistoryAdapter
@@ -28,11 +29,18 @@ class PetFlexActivity : AppCompatActivity() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var petFlexList :MutableList<PetSocial>
     private lateinit var petFlexAdapter: PetFlexAdapter
+    private var floatingadd: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPetFlexBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.posttoAdopt.setOnClickListener {
+            val intent = Intent(this, FlexProfileActivity::class.java)
+            intent.putExtra("key", floatingadd)
+            startActivity(intent)
+
+        }
 
         init()
         getPetSocial()
