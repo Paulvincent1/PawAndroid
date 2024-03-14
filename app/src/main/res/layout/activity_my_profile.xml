@@ -14,15 +14,16 @@
         android:src="@drawable/ic_profile_users"
         app:shapeAppearance="@style/circular"
         android:layout_gravity="center"/>
+
     <TextView
         android:id="@+id/tvViewProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="NAME"
         android:textColor="@color/Headline_Stroke"
-        android:text="TextView"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

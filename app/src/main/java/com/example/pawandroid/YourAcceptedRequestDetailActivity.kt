@@ -63,7 +63,7 @@ class YourAcceptedRequestDetailActivity : AppCompatActivity() {
 
                     val pet = response.body()?.pet
                     val adopt = response.body()
-                    val imageUrl = "http://192.168.1.107/${pet?.img}"
+                    val imageUrl = "http://192.168.0.13/${pet?.img}"
 //                          http://192.168.100.192/ , paul = http://192.168.0.13/
                     Glide.with(applicationContext)
                         .load(imageUrl)

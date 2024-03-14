@@ -23,8 +23,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".PetFlexEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewPetFlexActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".FlexProfileActivity"
             android:exported="false" />
