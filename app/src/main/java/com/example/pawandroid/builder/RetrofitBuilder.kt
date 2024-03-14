@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
-    private const val BASE_URL = "http://192.168.0.13/api/"
+    private const val BASE_URL = "http://192.168.1.107/api/"
 //                               nath="http://192.168.100.192/api/", paul="http://192.168.0.13/api/", "https://pawadoptpaw.online/api/"
     private var authToken: String? = null // Variable to hold the authentication token
 

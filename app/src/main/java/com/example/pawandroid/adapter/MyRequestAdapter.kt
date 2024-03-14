@@ -27,7 +27,7 @@ class MyRequestAdapter(val requestlist: MutableList<Adopt>): RecyclerView.Adapte
             // Bind other views here if needed
             val pet = currentItem.pet
             val img = pet.img
-            val imageUrl = "http://192.168.0.13/${img}"
+            val imageUrl = "http://192.168.1.107/${img}"
 //                          http://192.168.100.192/, paul =http://192.168.0.13/
             tvNameRequest.text = currentItem.name
             tvAddress.text = currentItem.address

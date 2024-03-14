@@ -34,7 +34,7 @@ class PetFlexAdapter(val petFlexList: MutableList<PetSocial>, val context: Conte
             // Bind other views here if needed
 
             val postImg = currentItem.img
-            val postUrlImg = "http://192.168.0.13/${postImg}"
+            val postUrlImg = "http://192.168.1.107/${postImg}"
 //                          http://192.168.100.192/, paul =http://192.168.0.13/
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(postUrlImg)
@@ -43,12 +43,12 @@ class PetFlexAdapter(val petFlexList: MutableList<PetSocial>, val context: Conte
 
 
             val userImg = currentItem.user.img
-            val userUrlImg = "http://192.168.0.13/${userImg}"
+            val userUrlImg = "http://192.168.1.107/${userImg}"
 //                          http://192.168.100.192/, paul =http://192.168.0.13/
             tvNameFlex.text = currentItem.user.name
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(userUrlImg)
-                .into(imageView)
+                .into(imgProfile)
 
             likecount.text = currentItem.like_count.toString()
             val id = currentItem.id

@@ -31,7 +31,7 @@ data class HistoryAdapter  (var historylist: MutableList<History>): RecyclerView
             // Bind other views here if needed
 
 
-            val imageUrl = "http://192.168.0.13/${currentItem.petimg}"
+            val imageUrl = "http://192.168.1.107/${currentItem.petimg}"
 //                          http://192.168.100.192/ , paul = http://192.168.0.13/
             tvNamePet.text = currentItem.petname
             Glide.with(holder.itemView.context) // Use holder.itemView.context

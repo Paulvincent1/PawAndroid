@@ -210,7 +210,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
+                        "http://192.168.1.107/${response?.img}"
                         // paul =  http://192.168.0.13/
                         //  nath =  http://192.168.100.192/
                     } else {

@@ -27,7 +27,7 @@ class YourAcceptedRequestAdapter(var adoptlist: MutableList<Adopt>): RecyclerVie
             // Bind other views here if needed
             val pet = currentItem.pet
 
-            val imageUrl = "http://192.168.0.13/${pet.img}"
+            val imageUrl = "http://192.168.1.107/${pet.img}"
 //                          http://192.168.100.192/ , paul = http://192.168.0.13/
             tvNamePet.text = pet.name
             Glide.with(holder.itemView.context) // Use holder.itemView.context
