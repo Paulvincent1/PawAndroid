@@ -35,14 +35,14 @@ class FlexProfileActivity : AppCompatActivity() {
     }
 
 
-    private fun getCurrentUser(){
+    private fun getCurrentUser() {
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.getCurrentUser()
         binding.progressBar10.visibility = View.VISIBLE
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 binding.progressBar10.visibility = View.GONE
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     val response = response?.body()
 
                     binding.textView.text = response?.name
