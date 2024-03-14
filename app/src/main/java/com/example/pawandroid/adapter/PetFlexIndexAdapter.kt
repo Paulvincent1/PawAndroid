@@ -3,29 +3,31 @@ package com.example.pawandroid.adapter
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pawandroid.MyRequestEditActivity
 import com.example.pawandroid.PetFlexEditActivity
-import com.example.pawandroid.PetInfoActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.builder.RetrofitBuilder
+import com.example.pawandroid.databinding.PetFlexIndexListBinding
 import com.example.pawandroid.databinding.PetFlexListBinding
 import com.example.pawandroid.model.PetSocial
 import com.example.pawandroid.service.PawService
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PetFlexAdapter(val petFlexList: MutableList<PetSocial>, val context: Context): RecyclerView.Adapter<PetFlexAdapter.ViewHolder>() {
+class PetFlexIndexAdapter(val petFlexList: MutableList<PetSocial>, val context: Context): RecyclerView.Adapter<PetFlexIndexAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: PetFlexListBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: PetFlexIndexListBinding): RecyclerView.ViewHolder(binding.root)
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetFlexAdapter.ViewHolder {
-        val view = PetFlexListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PetFlexIndexAdapter.ViewHolder {
+        val view = PetFlexIndexListBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return ViewHolder(view)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -78,10 +80,35 @@ class PetFlexAdapter(val petFlexList: MutableList<PetSocial>, val context: Conte
                     }
                 }
             }
-            edit.setOnClickListener {
-                val intent = Intent(holder.itemView.context, PetFlexEditActivity::class.java)
-                intent.putExtra("key", currentItem.id.toString())
-                holder.itemView.context.startActivity(intent)
+            // Access the layout inflater from the context
+            val inflater = LayoutInflater.from(holder.itemView.context)
+            val view: View = inflater.inflate(R.layout.item_bottom_sheet_report, null)
+            val dialog = BottomSheetDialog(holder.itemView.context)
+
+            report.setOnClickListener {
+                dialog.setContentView(view)
+                dialog.show()
+
+                // Access TextViews only after layout inflation
+                val reason1 = view.findViewById<TextView>(R.id.tvReason1)
+                val reason2 = view.findViewById<TextView>(R.id.tvReason2)
+                val reason3 = view.findViewById<TextView>(R.id.tvReason3)
+
+                // Set click listeners after TextViews are initialized
+                reason1?.setOnClickListener {
+                    report(currentItem.id,"Nudity or sexual activity")
+                    dialog.dismiss()
+                }
+                reason2?.setOnClickListener {
+                    report(currentItem.id,"Scam of fraud")
+                    dialog.dismiss()
+                }
+                reason3?.setOnClickListener {
+                    report(currentItem.id,"Others")
+
+                    dialog.dismiss()
+                }
+
             }
 
 
@@ -125,6 +152,23 @@ class PetFlexAdapter(val petFlexList: MutableList<PetSocial>, val context: Conte
                 Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    fun report(id:Int, reason: String){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.reportPostFlex(id, reason)
+        call.enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if (response.isSuccessful){
+                    Toast.makeText(context, "Thanks for letting us know!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Toast.makeText(context, "failed to report", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
 }

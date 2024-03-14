@@ -167,10 +167,43 @@ interface PawService {
     @GET("pet-social")
     fun petsocial(): Call<List<PetSocial>>
 
+    @GET("pet-social/ownposts")
+    fun ownPosts(): Call<List<PetSocial>>
+
+    @GET("pet-social/{id}/edit")
+    fun editPost(
+        @Path("id") id : Int
+    ): Call<PetSocial>
+    @Multipart
+    @POST("pet-social/{id}/update")
+    fun updatePost(
+        @Path("id") id :Int,
+        @Query("_method") method: String,
+        @Part("caption") caption : RequestBody,
+        @Part img: MultipartBody.Part
+    ): Call<Unit>
+
+    @DELETE("pet-social/{id}")
+    fun deletePost(@Path("id") id : Int): Call<Unit>
+
     @POST("pet-social/{id}/like")
     fun like(@Path("id") id: Int): Call<Unit>
 
     @POST("pet-social/{id}/unlike")
     fun unlike(@Path("id") id: Int): Call<Unit>
+
+    @Multipart
+    @POST("pet-social/post")
+    fun postPetSocial(
+        @Part("caption") caption: RequestBody,
+        @Part img: MultipartBody.Part
+    ): Call<Unit>
+
+    @FormUrlEncoded
+    @POST("pet-social/{id}")
+    fun reportPostFlex(@Path("id") id : Int,
+                       @Field("reason") reason: String
+    ): Call<Unit>
+
 
 }

@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.pawandroid.builder.RetrofitBuilder
-import com.example.pawandroid.databinding.ActivityPostFlexBinding
+import com.example.pawandroid.databinding.ActivityPetFlexEditBinding
 import com.example.pawandroid.model.PetSocial
 import com.example.pawandroid.model.User
 import com.example.pawandroid.service.PawService
@@ -25,53 +25,100 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-class PostFlexActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPostFlexBinding
+class PetFlexEditActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityPetFlexEditBinding
+    private var id: String? = null
     private var userId: String? = null
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var imagePart: MultipartBody.Part // Added to hold the imagePart
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPostFlexBinding.inflate(layoutInflater)
+        binding = ActivityPetFlexEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        id = intent.getStringExtra("key")
+        id?.let { editPost(it.toInt()) }
         getCurrentUser()
+
         binding.apply {
             postBtn.setOnClickListener {
                 val caption = editTextDesc.text.toString().trim()
                 // Check if imagePart is initialized and not null
                 if (::imagePart.isInitialized) {
                     Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
-                    postPetSocial(caption,imagePart)
+                    id?.let { it1 -> update(it1.toInt(),caption,imagePart) }
 
                 } else {
                     Toast.makeText(applicationContext, "img not initialized", Toast.LENGTH_SHORT).show()
                 }
             }
-
+            btnDelete.setOnClickListener {
+                id?.let { it1 -> deletePost(it1.toInt()) }
+            }
             putImage.setOnClickListener {
                 openImagePicker()
             }
-            imageView4.setOnClickListener {
+           imageView4.setOnClickListener {
                 finish()
             }
         }
+
     }
 
-    private fun postPetSocial(caption : String, imagePart: MultipartBody.Part){
+    private fun editPost(id:Int){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
-        val call = retrofit.postPetSocial(
-            caption.toRequestBody(),
-            imagePart
-        )
+        val call = retrofit.editPost(id)
+        call.enqueue(object : Callback<PetSocial> {
+            override fun onResponse(call: Call<PetSocial>, response: Response<PetSocial>) {
+                if(response.isSuccessful){
+                    val post = response.body()
+                    binding.editTextDesc.setText(post?.caption)
+                    val imageUrl = "http://192.168.0.13/${post?.img}"
+                    //                          http://192.168.100.192/ , paul = http://192.168.0.13/
+                    Glide.with(applicationContext)
+                        .load(imageUrl)
+                        .into(binding.imgPetInfo)
+                }
+            }
+
+            override fun onFailure(call: Call<PetSocial>, t: Throwable) {
+                Toast.makeText(applicationContext, "failed to load", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+    private fun update(id:Int, caption: String, img: MultipartBody.Part){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val method = "PUT"
+        val call = retrofit.updatePost(id,method,caption.toRequestBody(),img)
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                Toast.makeText(applicationContext, "Posted Successfully", Toast.LENGTH_SHORT).show()
-                finish()
+                if (response.isSuccessful){
+                    Toast.makeText(applicationContext, "Updated Successfully", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failed to post pet flex", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "failed to update", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+
+    private fun deletePost(id: Int){
+        val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        val call = retrofit.deletePost(id)
+        call.enqueue(object : Callback<Unit> {
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if(response.isSuccessful){
+                    Toast.makeText(applicationContext, "Deleted Successfully", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Toast.makeText(applicationContext, "Failed to delete", Toast.LENGTH_SHORT).show()
             }
 
         })

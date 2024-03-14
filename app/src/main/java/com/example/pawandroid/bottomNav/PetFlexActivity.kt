@@ -13,6 +13,7 @@ import com.example.pawandroid.PostAdoptionActivity
 import com.example.pawandroid.R
 import com.example.pawandroid.adapter.HistoryAdapter
 import com.example.pawandroid.adapter.PetFlexAdapter
+import com.example.pawandroid.adapter.PetFlexIndexAdapter
 import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityHistoryBinding
 import com.example.pawandroid.databinding.ActivityPetFlexBinding
@@ -28,7 +29,7 @@ class PetFlexActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPetFlexBinding
     private lateinit var recyclerView : RecyclerView
     private lateinit var petFlexList :MutableList<PetSocial>
-    private lateinit var petFlexAdapter: PetFlexAdapter
+    private lateinit var petFlexAdapter: PetFlexIndexAdapter
     private var floatingadd: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,7 +127,7 @@ class PetFlexActivity : AppCompatActivity() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         petFlexList = mutableListOf()
-        petFlexAdapter = PetFlexAdapter(petFlexList, applicationContext)
+        petFlexAdapter = PetFlexIndexAdapter(petFlexList, applicationContext)
         recyclerView.adapter = petFlexAdapter
     }
 
