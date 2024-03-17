@@ -1,155 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".PetFlexEditActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PetFlexEditActivity">
 
 
-<com.google.android.material.imageview.ShapeableImageView
-    android:id="@+id/imageView"
-    android:layout_width="61dp"
-    android:layout_height="47dp"
-    android:layout_marginTop="64dp"
-    android:src="@drawable/ic_profile_users"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.111"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:shapeAppearance="@style/circular" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="61dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/ic_profile_users"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/circular" />
 
-<TextView
-    android:id="@+id/textView16"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="76dp"
-    android:text="Username"
-    android:textSize="15dp"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.29"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="Username"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<com.google.android.material.imageview.ShapeableImageView
-    android:id="@+id/imageView4"
-    android:layout_width="49dp"
-    android:layout_height="37dp"
-    android:layout_marginTop="4dp"
-    android:src="@drawable/arrow_pet_info"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.017"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:shapeAppearance="@style/circular" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView4"
+        android:layout_width="49dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/arrow_pet_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/circular" />
 
-<androidx.constraintlayout.widget.Guideline
-    android:id="@+id/guideline2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    app:layout_constraintGuide_begin="64dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="76dp" />
 
-<TextView
-    android:id="@+id/textView15"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Flex your Pets"
-    android:textSize="20dp"
-    app:layout_constraintBottom_toTopOf="@+id/imageView"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.209"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.378" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flex your Pets"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.378" />
 
-<androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/postBtn"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:text="UPDATE"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.89"
-    app:layout_constraintStart_toEndOf="@+id/textView15"
-    app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/postBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Headline_Stroke"
+        android:drawableRight="@drawable/flex_edit"
+        android:text="UPDATE"
+        android:textColor="@color/Secondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="14dp"
+        android:background="@color/Headline_Stroke"
+        android:drawableRight="@drawable/baseline_delete_24"
         android:text="DELETE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.253"
+        android:textColor="@color/Secondary"
+        app:layout_constraintEnd_toStartOf="@+id/postBtn"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-    android:id="@+id/editText_desc"
-    android:layout_width="372dp"
-    android:layout_height="130dp"
-    android:layout_marginTop="28dp"
-    android:gravity="start"
-    android:hint="Describe Your Pet!"
-    android:inputType="textMultiLine"
-    android:lines="10"
-    android:maxLines="20"
-    android:minLines="5"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-<FrameLayout
-    android:id="@+id/frameLayout"
-    android:layout_width="331dp"
-    android:layout_height="268dp"
-    android:layout_marginBottom="164dp"
-    android:background="@drawable/image_border"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.487"
-    app:layout_constraintStart_toStartOf="parent">
-
-    <ImageView
-        android:id="@+id/imgPetInfo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp"
-        android:src="@drawable/baseline_pets_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/editText_desc"
+        android:layout_width="372dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="28dp"
+        android:gravity="start"
+        android:hint="Describe Your Pet!"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:maxLines="20"
+        android:minLines="5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="331dp"
+        android:layout_height="268dp"
+        android:layout_marginBottom="164dp"
+        android:background="@drawable/image_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imgPetInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:src="@drawable/baseline_pets_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.22" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/put_Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:src="@drawable/baseline_image_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.85" />
 
-</FrameLayout>
-
-<ImageView
-    android:id="@+id/put_Image"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:src="@drawable/baseline_image_24"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.884"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.85" />
-
-<ProgressBar
-    android:id="@+id/progressBar12"
-    style="?android:attr/progressBarStyle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="252dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.498"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:visibility="gone"/>
+    <ProgressBar
+        android:id="@+id/progressBar12"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

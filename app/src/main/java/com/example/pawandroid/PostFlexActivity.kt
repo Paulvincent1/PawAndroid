@@ -41,11 +41,11 @@ class PostFlexActivity : AppCompatActivity() {
                 val caption = editTextDesc.text.toString().trim()
                 // Check if imagePart is initialized and not null
                 if (::imagePart.isInitialized) {
-                    Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
+
                     postPetSocial(caption,imagePart)
 
                 } else {
-                    Toast.makeText(applicationContext, "img not initialized", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Put Image", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -60,17 +60,20 @@ class PostFlexActivity : AppCompatActivity() {
 
     private fun postPetSocial(caption : String, imagePart: MultipartBody.Part){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
+        binding.progressBar12.visibility = View.VISIBLE
         val call = retrofit.postPetSocial(
             caption.toRequestBody(),
             imagePart
         )
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                binding.progressBar12.visibility = View.GONE
                 Toast.makeText(applicationContext, "Posted Successfully", Toast.LENGTH_SHORT).show()
                 finish()
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
+                binding.progressBar12.visibility = View.GONE
                 Toast.makeText(applicationContext, "Failed to post pet flex", Toast.LENGTH_SHORT).show()
             }
 
@@ -90,9 +93,9 @@ class PostFlexActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        "https://pawadoptpaw.online/${response?.img}"
+                        // paul =  https://pawadoptpaw.online/
+                        //  nath =
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"

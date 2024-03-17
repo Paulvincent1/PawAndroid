@@ -45,11 +45,11 @@ class PetFlexEditActivity : AppCompatActivity() {
                 val caption = editTextDesc.text.toString().trim()
                 // Check if imagePart is initialized and not null
                 if (::imagePart.isInitialized) {
-                    Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
                     id?.let { it1 -> update(it1.toInt(),caption,imagePart) }
 
                 } else {
-                    Toast.makeText(applicationContext, "img not initialized", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Put Image", Toast.LENGTH_SHORT).show()
                 }
             }
             btnDelete.setOnClickListener {
@@ -68,13 +68,15 @@ class PetFlexEditActivity : AppCompatActivity() {
     private fun editPost(id:Int){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.editPost(id)
+        binding.progressBar12.visibility =View.VISIBLE
         call.enqueue(object : Callback<PetSocial> {
             override fun onResponse(call: Call<PetSocial>, response: Response<PetSocial>) {
+                binding.progressBar12.visibility =View.GONE
                 if(response.isSuccessful){
                     val post = response.body()
                     binding.editTextDesc.setText(post?.caption)
-                    val imageUrl = "http://192.168.0.13/${post?.img}"
-                    //                          http://192.168.100.192/ , paul = http://192.168.0.13/
+                    val imageUrl = "https://pawadoptpaw.online/${post?.img}"
+                    //                           , paul = https://pawadoptpaw.online/
                     Glide.with(applicationContext)
                         .load(imageUrl)
                         .into(binding.imgPetInfo)
@@ -82,7 +84,8 @@ class PetFlexEditActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<PetSocial>, t: Throwable) {
-                Toast.makeText(applicationContext, "failed to load", Toast.LENGTH_SHORT).show()
+                binding.progressBar12.visibility =View.GONE
+                Toast.makeText(applicationContext, "Failed to Load", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -91,8 +94,10 @@ class PetFlexEditActivity : AppCompatActivity() {
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val method = "PUT"
         val call = retrofit.updatePost(id,method,caption.toRequestBody(),img)
+        binding.progressBar12.visibility =View.VISIBLE
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                binding.progressBar12.visibility =View.GONE
                 if (response.isSuccessful){
                     Toast.makeText(applicationContext, "Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish()
@@ -100,7 +105,8 @@ class PetFlexEditActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Toast.makeText(applicationContext, "failed to update", Toast.LENGTH_SHORT).show()
+                binding.progressBar12.visibility =View.GONE
+                Toast.makeText(applicationContext, "Failed to Update", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -109,8 +115,10 @@ class PetFlexEditActivity : AppCompatActivity() {
     private fun deletePost(id: Int){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.deletePost(id)
+        binding.progressBar12.visibility = View.VISIBLE
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                binding.progressBar12.visibility =View.GONE
                 if(response.isSuccessful){
                     Toast.makeText(applicationContext, "Deleted Successfully", Toast.LENGTH_SHORT).show()
                     finish()
@@ -118,6 +126,7 @@ class PetFlexEditActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
+                binding.progressBar12.visibility =View.GONE
                 Toast.makeText(applicationContext, "Failed to delete", Toast.LENGTH_SHORT).show()
             }
 
@@ -137,9 +146,9 @@ class PetFlexEditActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        "https://pawadoptpaw.online/${response?.img}"
+                        // paul =  https://pawadoptpaw.online/
+                        //  nath =  
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
@@ -191,7 +200,7 @@ class PetFlexEditActivity : AppCompatActivity() {
                 if (cursor.moveToFirst()) {
                     val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
                     filePath = cursor.getString(columnIndex)
-                    Log.d("shit", "File path: $filePath")
+                    Log.d("Initiate", "File path: $filePath")
                 } else {
                     Log.e("PostAdoptionActivity", "Cursor moveToFirst failed")
                 }

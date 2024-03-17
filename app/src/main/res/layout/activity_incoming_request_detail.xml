@@ -96,7 +96,10 @@
           android:id="@+id/btnViewProfilee"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Headline_Stroke"
+          android:layout_marginEnd="3dp"
+          android:layout_marginStart="3dp"
+          android:background="@color/Headline_Stroke"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="ViewProfile"/>
 
@@ -104,7 +107,9 @@
           android:id="@+id/btnAcceptt"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Headline_Stroke"
+          android:layout_marginEnd="3dp"
+          android:background="@color/Headline_Stroke"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="Accept"/>
 
@@ -112,7 +117,9 @@
           android:id="@+id/btnRejectt"
           android:layout_width="0dp"
           android:layout_weight="1"
-          android:textColor="@color/Headline_Stroke"
+          android:layout_marginEnd="3dp"
+          android:background="@color/Headline_Stroke"
+          android:textColor="@color/Secondary"
           android:layout_height="wrap_content"
           android:text="Reject"/>
   </LinearLayout>

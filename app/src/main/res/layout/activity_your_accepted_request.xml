@@ -13,13 +13,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="34dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:text="Your Accepted Request" />
 
+
+    <LinearLayout
+        android:id="@+id/linearContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:layout_marginTop="90dp">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvYourAccepted"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_margin="1dp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

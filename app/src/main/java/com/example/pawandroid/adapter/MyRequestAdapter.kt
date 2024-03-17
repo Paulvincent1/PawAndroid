@@ -27,8 +27,8 @@ class MyRequestAdapter(val requestlist: MutableList<Adopt>): RecyclerView.Adapte
             // Bind other views here if needed
             val pet = currentItem.pet
             val img = pet.img
-            val imageUrl = "http://192.168.0.13/${img}"
-//                          http://192.168.100.192/, paul =http://192.168.0.13/
+            val imageUrl = "https://pawadoptpaw.online/${img}"
+//                          , paul =https://pawadoptpaw.online/
             tvNameRequest.text = currentItem.name
             tvAddress.text = currentItem.address
             Glide.with(holder.itemView.context) // Use holder.itemView.context

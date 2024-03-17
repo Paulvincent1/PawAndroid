@@ -89,9 +89,9 @@ class ViewProfileActivity : AppCompatActivity() {
                         binding.tvNameProfile.text = user.name
                         binding.emailText.text = user.email
                         val imageUrl = if (!user.img.isNullOrEmpty()) {
-                            "http://192.168.0.13/${user.img}"
-                            // paul =  http://192.168.0.13/
-                            //  nath =  http://192.168.100.192/
+                            "https://pawadoptpaw.online/${user.img}"
+                            // paul =  https://pawadoptpaw.online/
+                            //  nath =  
                         } else {
                             // Replace "default_image_url" with the resource ID of your default image
                             "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"

@@ -11,11 +11,11 @@
     tools:context=".SignupActivity">
 
     <ImageView
-        android:layout_width="77dp"
-        android:layout_height="80dp"
-        android:padding="10dp"
+        android:layout_width="141dp"
+        android:layout_height="145dp"
         android:layout_marginStart="20dp"
-        android:src="@drawable/paw_icon" />
+        android:layout_marginTop="28dp"
+        android:src="@drawable/paw_logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                 android:id="@+id/btn_signup"
                 android:layout_width="215dp"
                 android:layout_height="49dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="70dp"
                 android:layout_gravity="center"
                 android:background="@drawable/custom_edittext_2nd"
                 android:text="SignUp"

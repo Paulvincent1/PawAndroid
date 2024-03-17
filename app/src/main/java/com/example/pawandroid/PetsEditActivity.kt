@@ -128,8 +128,8 @@ class PetsEditActivity : AppCompatActivity() {
                         editTextAge.setText(pet?.age.toString())
                         editTextBreed.setText(pet?.breed)
                         editTextDesc.setText(pet?.description)
-                        val imageUrl = "http://192.168.0.13/${pet?.img}"
- //                          http://192.168.100.192/ , paul = http://192.168.0.13/
+                        val imageUrl = "https://pawadoptpaw.online/${pet?.img}"
+ //                           , paul = https://pawadoptpaw.online/
                         Glide.with(applicationContext)
                             .load(imageUrl)
                             .into(imgPetInfo)
@@ -211,7 +211,7 @@ class PetsEditActivity : AppCompatActivity() {
                 if (cursor.moveToFirst()) {
                     val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
                     filePath = cursor.getString(columnIndex)
-                    Log.d("shit", "File path: $filePath")
+                    Log.d("Init", "File path: $filePath")
                 } else {
                     Log.e("PostAdoptionActivity", "Cursor moveToFirst failed")
                 }

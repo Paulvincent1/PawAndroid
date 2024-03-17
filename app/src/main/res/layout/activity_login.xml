@@ -10,12 +10,11 @@
     android:background="@color/Secondary">
 
     <ImageView
-        android:layout_width="77dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="28dp"
-        android:padding="10dp"
+        android:layout_width="141dp"
+        android:layout_height="145dp"
         android:layout_marginStart="20dp"
-        android:src="@drawable/paw_icon"/>
+        android:layout_marginTop="28dp"
+        android:src="@drawable/paw_logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +36,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
@@ -100,19 +99,13 @@
                     android:id="@+id/show_pass_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:textColor="@color/Secondary"
                     android:text="Show Password"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="90dp"
                     android:buttonTint="@color/Secondary"/>
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:text="Forgot Password?"
-                    android:textColor="@color/Secondary"/>
+
 
             </LinearLayout>
 
@@ -135,12 +128,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="90dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tvSignup2"
+                    android:id="@+id/tvSignupInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Don't have an account?"

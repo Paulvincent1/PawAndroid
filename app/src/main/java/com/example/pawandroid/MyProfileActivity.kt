@@ -63,14 +63,14 @@ class MyProfileActivity : AppCompatActivity() {
                     petList.clear()
                     petList.addAll(responseBody)
                     myProfileAdapter.notifyDataSetChanged()
-                    Toast.makeText(applicationContext, "good", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Success", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<Pets>>, t: Throwable) {
                 binding.progressBar9.visibility = View.GONE
                 // Add logging to indicate failure
-                Toast.makeText(applicationContext, "bad", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Bad", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -90,9 +90,9 @@ class MyProfileActivity : AppCompatActivity() {
                     getUserPets(userId!!.toInt())
 
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        "https://pawadoptpaw.online/${response?.img}"
+                        // paul =  https://pawadoptpaw.online/
+                        //  nath =  
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"

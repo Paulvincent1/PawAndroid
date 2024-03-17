@@ -35,6 +35,10 @@ class FlexProfileActivity : AppCompatActivity() {
         init()
         getPetSocial()
 
+        binding.backToBack.setOnClickListener {
+            finish()
+        }
+
         binding.posttoAdopt.setOnClickListener {
             val intent = Intent(this, PostFlexActivity::class.java)
             intent.putExtra("key", floatingadd)
@@ -61,9 +65,9 @@ class FlexProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        "https://pawadoptpaw.online/${response?.img}"
+                        // paul =  https://pawadoptpaw.online/
+                        //  nath =
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"

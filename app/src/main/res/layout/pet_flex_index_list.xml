@@ -8,8 +8,8 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="30dp"
@@ -18,104 +18,135 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rvClick"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="553dp"
             android:background="@color/Secondary">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="54dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_profile_users"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.067"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@style/circular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgProfile"
+                    android:layout_width="54dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_profile_users"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.053"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.031"
+                    app:shapeAppearance="@style/circular" />
+                <TextView
+                    android:id="@+id/tvNameFlex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textColor="@color/Headline_Stroke"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.675"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.051" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/report"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/report_icon"
+                    android:layout_marginStart="180dp"
+                    android:text="report"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/imgPetProfile"
                 android:layout_width="326dp"
                 android:layout_height="331dp"
-                android:layout_marginTop="30dp"
                 android:src="@drawable/baseline_pets_dark"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.48"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contentFlex"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="42dp"
-                android:layout_height="29dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/baseline_favorite_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgPetProfile"
-                app:layout_constraintVertical_bias="0.0" />
-
-
-            <TextView
-                android:id="@+id/tvNameFlex"
-                android:layout_width="260dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Name:"
-                android:textColor="@color/Headline_Stroke"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/contentFlex"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/contentFlex"
-                android:layout_width="320dp"
-                android:layout_height="47dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="300dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="content"
-                android:textColor="@color/Headline_Stroke"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.094"
+                app:layout_constraintHorizontal_bias="0.64"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029" />
+                app:layout_constraintVertical_bias="0.806" />
 
-            <TextView
-                android:id="@+id/likecount"
-                android:layout_width="22dp"
-                android:layout_height="20dp"
-                android:text="0"
-                android:textStyle="bold"
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/img1"
-                app:layout_constraintTop_toBottomOf="@+id/imgPetProfile"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="390dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="30dp">
 
-            <TextView
-                android:id="@+id/report"
+                <TextView
+                    android:id="@+id/contentFlex"
+                    android:layout_width="317dp"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="content"
+                    android:textColor="@color/Headline_Stroke"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.154" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="24dp"
-                android:text="report"
+                android:layout_marginBottom="12dp"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.087"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/img1"
+                    android:layout_width="42dp"
+                    android:layout_height="29dp"
+                    android:src="@drawable/baseline_favorite_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.09"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.973" />
+
+                <TextView
+                    android:id="@+id/likecount"
+                    android:layout_width="22dp"
+                    android:layout_height="20dp"
+                    android:text="0"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.212"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.969" />
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

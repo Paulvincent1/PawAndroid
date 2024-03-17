@@ -43,7 +43,7 @@ class SignupActivity : AppCompatActivity() {
                 binding.progressBar2.visibility = View.GONE
                 binding.btnSignup.isEnabled = true
                 if (response.isSuccessful){
-                    Toast.makeText(applicationContext, "Register Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Registered Successfully", Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
@@ -51,7 +51,7 @@ class SignupActivity : AppCompatActivity() {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 binding.progressBar2.visibility = View.GONE
                 binding.btnSignup.isEnabled = true
-                Toast.makeText(applicationContext, "cant connect", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Invalid Credentials", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -64,7 +64,7 @@ class PostAdoptionActivity : AppCompatActivity() {
 
                 // Check if imagePart is initialized and not null
                 if (::imagePart.isInitialized) {
-                    Toast.makeText(applicationContext, "hi", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Loading", Toast.LENGTH_SHORT).show()
                     postPet(name, age.toInt(),species,breed,gender,region,description,imagePart)
 
                 } else {
@@ -135,7 +135,7 @@ class PostAdoptionActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Pets>, t: Throwable) {
-                Log.e("potekTalaga", "Failed to post pet", t)
+                Log.e("Failed", "Failed to post pet", t)
                 Toast.makeText(applicationContext, "Failed to post pet", Toast.LENGTH_SHORT).show()
             }
         })
@@ -174,7 +174,7 @@ class PostAdoptionActivity : AppCompatActivity() {
                 if (cursor.moveToFirst()) {
                     val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
                     filePath = cursor.getString(columnIndex)
-                    Log.d("shit", "File path: $filePath")
+                    Log.d("Init", "File path: $filePath")
                 } else {
                     Log.e("PostAdoptionActivity", "Cursor moveToFirst failed")
                 }

@@ -87,7 +87,7 @@ class PetInfoActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 binding.progressBar4.visibility = View.GONE
                 if (response.isSuccessful) {
-                    Toast.makeText(this@PetInfoActivity, "Thanks for letting us know!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@PetInfoActivity, "Thanks for Letting Us Know", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@PetInfoActivity, "Unsuccessful response", Toast.LENGTH_SHORT).show()
                 }
@@ -124,9 +124,9 @@ class PetInfoActivity : AppCompatActivity() {
                        binding.tvBreed.text = pet.breed
                        binding.tvDescription.text = pet.description
                        binding.tvLocation.text = pet.region
-                       imageUrl = "http://192.168.0.13/${pet.img}"
-//                                   paul =  http://192.168.0.13/
-//                                   nath =  http://192.168.100.192/
+                       imageUrl = "https://pawadoptpaw.online/${pet.img}"
+//                                   paul =  https://pawadoptpaw.online/
+//                                   nath =  
                        Glide.with(applicationContext)
                            .load(imageUrl)
                            .into(binding.imgPetInfo)

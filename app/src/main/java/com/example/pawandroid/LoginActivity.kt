@@ -89,14 +89,20 @@ class LoginActivity : AppCompatActivity() {
         val call = user.login(email, password)
         binding.progressBar.visibility = View.VISIBLE
         binding.btnLogin.isEnabled = false
+        binding.tilUsername.isEnabled = false
+        binding.tilPassword.isEnabled = false
+        binding.tvSignup.isEnabled = false
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
+                binding.tilUsername.isEnabled = true
+                binding.tilPassword.isEnabled = true
+                binding.tvSignup.isEnabled = true
+
                 if (response.isSuccessful) {
                     Toast.makeText(applicationContext, "Login", Toast.LENGTH_SHORT).show()
                     val token = response.body()?.token
-                    binding.textView2.text = token
                     token?.let { RetrofitBuilder.setAuthToken(it) }
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(intent)
@@ -109,7 +115,10 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.isEnabled = true
-                Toast.makeText(applicationContext, "Can't Connect", Toast.LENGTH_SHORT).show()
+                binding.tilUsername.isEnabled = true
+                binding.tilPassword.isEnabled = true
+                binding.tvSignup.isEnabled = true
+                Toast.makeText(applicationContext, "Invalid Credentials", Toast.LENGTH_SHORT).show()
             }
         })
     }

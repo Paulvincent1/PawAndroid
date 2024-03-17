@@ -77,7 +77,8 @@ class MainActivity : AppCompatActivity() {
                     // Filter your list based on the newText
                     val filteredList = petList.filter { petItem ->
                         (petItem.breed?.contains(newText, ignoreCase = true) == true) ||
-                                (petItem.name?.contains(newText, ignoreCase = true) == true)
+                                (petItem.name?.contains(newText, ignoreCase = true) == true) ||
+                                (petItem.region?.contains(newText, ignoreCase = true) == true)
                     }.toMutableList()
 
                     // Update your adapter with the filtered results

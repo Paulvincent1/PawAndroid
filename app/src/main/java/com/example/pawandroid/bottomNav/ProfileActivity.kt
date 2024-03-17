@@ -210,9 +210,9 @@ class ProfileActivity : AppCompatActivity() {
 
                     userId = response?.id.toString()
                     val imgUrl = if (!response?.img.isNullOrEmpty()) {
-                        "http://192.168.0.13/${response?.img}"
-                        // paul =  http://192.168.0.13/
-                        //  nath =  http://192.168.100.192/
+                        "https://pawadoptpaw.online/${response?.img}"
+                        // paul =  https://pawadoptpaw.online/
+                        //  nath =  
                     } else {
                         // Replace "default_image_url" with the resource ID of your default image
                         "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
@@ -240,7 +240,7 @@ class ProfileActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 binding.progressBar7.visibility = View.GONE
                 if (response.isSuccessful){
-                    Toast.makeText(applicationContext, "updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Finished", Toast.LENGTH_SHORT).show()
                 }
             }
 

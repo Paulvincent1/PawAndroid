@@ -13,10 +13,28 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent" >
 
+        <ImageView
+            android:layout_width="141dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:src="@drawable/paw_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flex Your Pet"
+            android:layout_gravity="end"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/Headline_Stroke"
+            android:textSize="30dp"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/pet_bg">
+            android:background="@drawable/pet_bg"
+            android:layout_marginTop="200dp">
 
 
 

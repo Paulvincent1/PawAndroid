@@ -38,17 +38,23 @@ class PetFlexIndexAdapter(val petFlexList: MutableList<PetSocial>, val context: 
             // Bind other views here if needed
 
             val postImg = currentItem.img
-            val postUrlImg = "http://192.168.0.13/${postImg}"
-//                          http://192.168.100.192/, paul =http://192.168.0.13/
+            val postUrlImg = "https://pawadoptpaw.online/${postImg}"
+//                          , paul =https://pawadoptpaw.online/
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(postUrlImg)
                 .into(imgPetProfile)
             contentFlex.text = currentItem.caption
 
 
-            val userImg = currentItem.user.img
-            val userUrlImg = "http://192.168.0.13/${userImg}"
-//                          http://192.168.100.192/, paul =http://192.168.0.13/
+            val userUrlImg = if (!currentItem.user.img.isNullOrEmpty()) {
+                 "https://pawadoptpaw.online/${currentItem.user.img}"
+                // paul =  https://pawadoptpaw.online/
+                //  nath =
+            } else {
+                // Replace "default_image_url" with the resource ID of your default image
+                "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+            }
+
             tvNameFlex.text = currentItem.user.name
             Glide.with(holder.itemView.context) // Use holder.itemView.context
                 .load(userUrlImg)
@@ -126,15 +132,16 @@ class PetFlexIndexAdapter(val petFlexList: MutableList<PetSocial>, val context: 
     fun like(id: Int){
         val retrofit = RetrofitBuilder.buildService(PawService::class.java)
         val call = retrofit.like(id)
+        val heartEmoticon = "\u2764"
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (response.isSuccessful){
-                    Toast.makeText(context, "good", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "$heartEmoticon", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -144,7 +151,7 @@ class PetFlexIndexAdapter(val petFlexList: MutableList<PetSocial>, val context: 
         call.enqueue(object : Callback<Unit> {
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (response.isSuccessful){
-                    Toast.makeText(context, "good", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
                 }
             }
 

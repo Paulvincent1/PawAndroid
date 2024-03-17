@@ -41,7 +41,7 @@ class AdoptActivity : AppCompatActivity() {
                 val additionalComment = editTextWhyAdopt.text.toString().trim()
 
                 if (name.isEmpty()) {
-                    editTextFullName.error = "Please enter your name"
+                    editTextFullName.error = "Please Enter your name"
                     Toast.makeText(applicationContext, "Please enter your name", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
@@ -126,11 +126,12 @@ class AdoptActivity : AppCompatActivity() {
             adoption_agreement,
             additional_comment
         )
-
+        binding.btnAdopt3.isEnabled = false
         // Enqueuing the call to make it asynchronous
         call.enqueue(object : Callback<Adopt> {
             override fun onResponse(call: Call<Adopt>, response: Response<Adopt>) {
                 // Handling successful response
+                binding.btnAdopt3.isEnabled = true
                 if(response.isSuccessful){
                     // Showing a toast message indicating success
                     Toast.makeText(applicationContext, "Pet Requested Successfully", Toast.LENGTH_SHORT).show()
@@ -140,12 +141,13 @@ class AdoptActivity : AppCompatActivity() {
                     // Finishing the current activity or process
                     finish()
                 }else{
-                    Toast.makeText(applicationContext, "you already requested this pet", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Already Requested", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Adopt>, t: Throwable) {
                 // Handling failure response
+                binding.btnAdopt3.isEnabled = true
                 // Showing a toast message indicating failure
                 Toast.makeText(applicationContext, "Connection error", Toast.LENGTH_SHORT).show()
             }
