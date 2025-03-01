@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "621705695447",
+    "project_id": "pawandroid-9e878",
+    "storage_bucket": "pawandroid-9e878.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621705695447:android:c1aa2517c08eee5d296092",
+        "android_client_info": {
+          "package_name": "com.example.pawandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBS0ADDRp2zhICS4x83gzJ3kiqpoNhy1LY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

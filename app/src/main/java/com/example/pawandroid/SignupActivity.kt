@@ -11,13 +11,31 @@ import com.example.pawandroid.service.PawService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
+    val auth = FirebaseAuth.getInstance();
+
+    fun signUpUser(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{ task ->
+            if (task.isSuccessful) {
+                val user = auth.currentUser
+                println("Registration")
+                println(user)
+            } else {
+                val errorMessage = task.exception?.message
+                println("Registration failed")
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         binding.apply {
             btnSignup.setOnClickListener {
@@ -26,7 +44,8 @@ class SignupActivity : AppCompatActivity() {
                 val pass = tilPassword.text.toString()
                 val pass_confrim = tilPassword2.text.toString()
 
-                register(name,email,pass,pass_confrim)
+//                register(name,email,pass,pass_confrim)
+                signUpUser(email, pass)
             }
 
         }

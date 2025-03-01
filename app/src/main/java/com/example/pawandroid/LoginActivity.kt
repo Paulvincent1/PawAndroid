@@ -16,6 +16,7 @@ import com.example.pawandroid.builder.RetrofitBuilder
 import com.example.pawandroid.databinding.ActivityLoginBinding
 import com.example.pawandroid.model.User
 import com.example.pawandroid.service.PawService
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +24,20 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private var isPasswordVisible = false
+
+    val auth = FirebaseAuth.getInstance();
+
+    fun loginFirebase(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    println("Login successful!")
+                } else {
+                    println("Login failed: ${task.exception?.message}")
+                }
+            }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +48,9 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 val email = tilUsername.text.toString()
                 val pass = tilPassword.text.toString()
-                login(email, pass)
+//                login(email, pass)
+
+                loginFirebase(email,pass)
             }
 
             tvSignup.setOnClickListener {
